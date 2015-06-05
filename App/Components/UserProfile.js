@@ -74,12 +74,14 @@ module.exports = React.createClass({
   },
   renderLoadingView: function() { 
     return ( 
-      <View style={styles.horizontal}>
-      <ActivityIndicatorIOS
-        animating={true}
-        style={[styles.centering, {height: 80}]}
-        size="large"
-      />
+      <View style={styles.loadingView}>
+      <View>
+        <ActivityIndicatorIOS
+          animating={true}
+          style={{height: 30}}
+          size="small"
+        />
+      </View>
       </View>
     ); 
   },
@@ -243,10 +245,10 @@ var styles = StyleSheet.create({
     fontSize: 12,
     color: '#666666',
   },
-  centering: {
-    paddingTop: 200,
-    alignItems: 'center',
+  loadingView: {
     justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
   },
 });
 
