@@ -88,6 +88,74 @@ var FAKE_DATA = {
   "subscribers_count": 14
 }
 
+LANGUAGE_DATA = {
+  "JavaScript": 14351,
+  "Objective-C": 4733
+};
+
+CONTRIBUTION_DATA = [
+  {
+    "login": "skyline75489",
+    "id": 4710575,
+    "avatar_url": "https://avatars.githubusercontent.com/u/4710575?v=3",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/skyline75489",
+    "html_url": "https://github.com/skyline75489",
+    "followers_url": "https://api.github.com/users/skyline75489/followers",
+    "following_url": "https://api.github.com/users/skyline75489/following{/other_user}",
+    "gists_url": "https://api.github.com/users/skyline75489/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/skyline75489/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/skyline75489/subscriptions",
+    "organizations_url": "https://api.github.com/users/skyline75489/orgs",
+    "repos_url": "https://api.github.com/users/skyline75489/repos",
+    "events_url": "https://api.github.com/users/skyline75489/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/skyline75489/received_events",
+    "type": "User",
+    "site_admin": false,
+    "contributions": 130
+  },
+  {
+    "login": "felixonmars",
+    "id": 1006477,
+    "avatar_url": "https://avatars.githubusercontent.com/u/1006477?v=3",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/felixonmars",
+    "html_url": "https://github.com/felixonmars",
+    "followers_url": "https://api.github.com/users/felixonmars/followers",
+    "following_url": "https://api.github.com/users/felixonmars/following{/other_user}",
+    "gists_url": "https://api.github.com/users/felixonmars/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/felixonmars/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/felixonmars/subscriptions",
+    "organizations_url": "https://api.github.com/users/felixonmars/orgs",
+    "repos_url": "https://api.github.com/users/felixonmars/repos",
+    "events_url": "https://api.github.com/users/felixonmars/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/felixonmars/received_events",
+    "type": "User",
+    "site_admin": false,
+    "contributions": 4
+  },
+  {
+    "login": "Fansion",
+    "id": 5452767,
+    "avatar_url": "https://avatars.githubusercontent.com/u/5452767?v=3",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/Fansion",
+    "html_url": "https://github.com/Fansion",
+    "followers_url": "https://api.github.com/users/Fansion/followers",
+    "following_url": "https://api.github.com/users/Fansion/following{/other_user}",
+    "gists_url": "https://api.github.com/users/Fansion/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/Fansion/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/Fansion/subscriptions",
+    "organizations_url": "https://api.github.com/users/Fansion/orgs",
+    "repos_url": "https://api.github.com/users/Fansion/repos",
+    "events_url": "https://api.github.com/users/Fansion/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/Fansion/received_events",
+    "type": "User",
+    "site_admin": false,
+    "contributions": 1
+  }
+];
+
 var React = require('react-native');
 var {
   AppRegistry,
