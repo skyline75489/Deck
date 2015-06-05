@@ -36,7 +36,6 @@ var FAKE_DATA = {
 
 var React = require('react-native');
 var {
-  AppRegistry,
   AsyncStorage,
   StyleSheet,
   View,

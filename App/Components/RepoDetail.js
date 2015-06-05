@@ -158,7 +158,6 @@ CONTRIBUTION_DATA = [
 
 var React = require('react-native');
 var {
-  AppRegistry,
   AsyncStorage,
   StyleSheet,
   View,
@@ -167,28 +166,84 @@ var {
   TouchableOpacity,
   TouchableHighlight,
   ScrollView,
-  LinkingIOS,
+  ActivityIndicatorIOS,
 } = React;
 
 var Base = require("../Common/Base");
 var Api = require('../Network/Api');
+
+var LanguageRow = require('./LanguageRow');
 
 var Icon = require("react-native-icons");
 
 module.exports = React.createClass({
   getInitialState: function() {
     return {
-      data: FAKE_DATA,
+      repoData: null,
+      languageData: null,
+      contributorsData: null,
+      repoDataReady: false,
+      languageDataReady: false,
+      contributorsDataReady: false,
     };
   },
-  render: function() {
-    var data = this.state.data;
+  componentDidMount: function() { 
+    var that = this;
+    Api.getRepoInfo(this.props.data.repoName, function(data) {
+      that.setState({
+        repoData: data,
+        repoDataReady: true,
+      });
+    });
+    Api.getRepoLanguage(this.props.data.repoName, function(data) {
+      that.setState({
+        languageData: data,
+        languageDataReady: true,
+      });
+    });
+    Api.getRepoContributors(this.props.data.repoName, function(data) {
+      that.setState({
+        contributorsData: data,
+        contributorsDataReady: true,
+      });
+    });
+  },
+  renderLoadingView: function() { 
+    return ( 
+      <View style={styles.loadingView}>
+      <View>
+        <ActivityIndicatorIOS
+          animating={true}
+          style={{height: 30}}
+          size="small"
+        />
+      </View>
+      </View>
+    ); 
+  },
 
+  render: function() {
+    if (! (this.state.repoDataReady &&
+       this.state.languageDataReady &&
+       this.state.contributorsDataReady)) {
+      return this.renderLoadingView();
+    }
+    var data = this.state.repoData;
+    var languageData = this.state.languageData;
     var icon = <Icon name='octicons|repo' size={16} color='#666666' style={styles.icon}/>;
     if (data.fork) {
       icon = <Icon name='octicons|repoForked' size={16} color='#666666' style={styles.icon}/>;
     }
 
+    var languageStatics = [];
+    var totalLOC = 0;
+    for (var k in languageData) {
+      totalLOC += languageData[k];
+    }
+    for (var k in languageData) {
+      var percent = Math.round(languageData[k] / totalLOC * 100, -1);
+      languageStatics.push(<LanguageRow key={Base.makeKey()} name={k} percent={percent}/>);
+    }
     return (
       <View style={styles.containter}>
         <View style={styles.repoNameWrapper}>
@@ -217,6 +272,7 @@ module.exports = React.createClass({
         </View>
 
         <View style={styles.languageWrapper}>
+          {languageStatics}
         </View>
       </View>
       );
@@ -258,8 +314,20 @@ var styles = StyleSheet.create({
     color: '#666666',
     marginLeft: 5,
   },
+  languageWrapper: {
+    flex: 1,
+    marginLeft: 10,
+  },
+  gray: {
+    color: '#666666',
+  },
   icon: {
     width: 15,
     height: 15,
+  },
+  loadingView: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
   },
 });
