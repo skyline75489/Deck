@@ -1,0 +1,116 @@
+var FAKE_DATA = {
+  "id": 22034841,
+  "name": "pyfm",
+  "full_name": "skyline75489/pyfm",
+  "owner": {
+    "login": "skyline75489",
+    "id": 4710575,
+    "avatar_url": "https://avatars.githubusercontent.com/u/4710575?v=3",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/skyline75489",
+    "html_url": "https://github.com/skyline75489",
+    "followers_url": "https://api.github.com/users/skyline75489/followers",
+    "following_url": "https://api.github.com/users/skyline75489/following{/other_user}",
+    "gists_url": "https://api.github.com/users/skyline75489/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/skyline75489/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/skyline75489/subscriptions",
+    "organizations_url": "https://api.github.com/users/skyline75489/orgs",
+    "repos_url": "https://api.github.com/users/skyline75489/repos",
+    "events_url": "https://api.github.com/users/skyline75489/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/skyline75489/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  "private": false,
+  "html_url": "https://github.com/skyline75489/pyfm",
+  "description": "使用Python编写的豆瓣FM(douban.fm)命令行播放器",
+  "fork": false,
+  "url": "https://api.github.com/repos/skyline75489/pyfm",
+  "forks_url": "https://api.github.com/repos/skyline75489/pyfm/forks",
+  "keys_url": "https://api.github.com/repos/skyline75489/pyfm/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/skyline75489/pyfm/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/skyline75489/pyfm/teams",
+  "hooks_url": "https://api.github.com/repos/skyline75489/pyfm/hooks",
+  "issue_events_url": "https://api.github.com/repos/skyline75489/pyfm/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/skyline75489/pyfm/events",
+  "assignees_url": "https://api.github.com/repos/skyline75489/pyfm/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/skyline75489/pyfm/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/skyline75489/pyfm/tags",
+  "blobs_url": "https://api.github.com/repos/skyline75489/pyfm/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/skyline75489/pyfm/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/skyline75489/pyfm/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/skyline75489/pyfm/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/skyline75489/pyfm/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/skyline75489/pyfm/languages",
+  "stargazers_url": "https://api.github.com/repos/skyline75489/pyfm/stargazers",
+  "contributors_url": "https://api.github.com/repos/skyline75489/pyfm/contributors",
+  "subscribers_url": "https://api.github.com/repos/skyline75489/pyfm/subscribers",
+  "subscription_url": "https://api.github.com/repos/skyline75489/pyfm/subscription",
+  "commits_url": "https://api.github.com/repos/skyline75489/pyfm/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/skyline75489/pyfm/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/skyline75489/pyfm/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/skyline75489/pyfm/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/skyline75489/pyfm/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/skyline75489/pyfm/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/skyline75489/pyfm/merges",
+  "archive_url": "https://api.github.com/repos/skyline75489/pyfm/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/skyline75489/pyfm/downloads",
+  "issues_url": "https://api.github.com/repos/skyline75489/pyfm/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/skyline75489/pyfm/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/skyline75489/pyfm/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/skyline75489/pyfm/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/skyline75489/pyfm/labels{/name}",
+  "releases_url": "https://api.github.com/repos/skyline75489/pyfm/releases{/id}",
+  "created_at": "2014-07-20T14:28:12Z",
+  "updated_at": "2015-05-26T08:19:54Z",
+  "pushed_at": "2015-01-13T05:04:07Z",
+  "git_url": "git://github.com/skyline75489/pyfm.git",
+  "ssh_url": "git@github.com:skyline75489/pyfm.git",
+  "clone_url": "https://github.com/skyline75489/pyfm.git",
+  "svn_url": "https://github.com/skyline75489/pyfm",
+  "homepage": "",
+  "size": 574,
+  "stargazers_count": 94,
+  "watchers_count": 94,
+  "language": "Python",
+  "has_issues": true,
+  "has_downloads": true,
+  "has_wiki": true,
+  "has_pages": false,
+  "forks_count": 24,
+  "mirror_url": null,
+  "open_issues_count": 0,
+  "forks": 24,
+  "open_issues": 0,
+  "watchers": 94,
+  "default_branch": "master",
+  "network_count": 24,
+  "subscribers_count": 14
+}
+
+var React = require('react-native');
+var {
+  AppRegistry,
+  AsyncStorage,
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  TouchableHighlight,
+  ScrollView,
+  LinkingIOS,
+} = React;
+
+var Base = require("../Common/Base");
+var Api = require('../Network/Api');
+
+var Icon = require("react-native-icons");
+
+module.exports = React.createClass({
+  render: function() {
+    return (
+      <Text>Repo</Text>
+      );
+  }
+});
