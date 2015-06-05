@@ -89,6 +89,38 @@ module.exports = React.createClass({
       return this.renderLoadingView();
     }
     var data = this.state.data;
+    var infoList = []
+    if (data.location) {
+      infoList.push(<View style={styles.itemWrapper}>
+                      <View style={styles.iconWrapper}>
+                        <Icon name='octicons|location' size={16} color='#666666' style={styles.icon}/>
+                      </View>
+                      <View style={styles.textWrapper}>
+                        <Text style={styles.location}>{data.location}</Text>
+                      </View>
+                    </View>);
+    } 
+    if (data.email) {
+      infoList.push(<View style={styles.itemWrapper}>
+                      <View style={styles.iconWrapper}>
+                        <Icon name='octicons|mail' size={16} color='#666666' style={styles.icon}/>
+                      </View>
+                      <View style={styles.textWrapper}>
+                        <TouchableOpacity onPress={()=>{LinkingIOS.openURL('mailto:' + data.email);}}><Text style={styles.email}>{data.email}</Text></TouchableOpacity>
+                      </View>
+                    </View>);
+    }
+    if (data.blog) {
+      infoList.push(<View style={styles.itemWrapper}>
+                      <View style={styles.iconWrapper}>
+                        <Icon name='octicons|link' size={16} color='#666666' style={styles.icon}/>
+                      </View>
+                      <View style={styles.textWrapper}>
+                        <TouchableOpacity onPress={()=>{LinkingIOS.openURL(data.blog);}}><Text style={styles.blog}>{data.blog}</Text></TouchableOpacity>
+                      </View>
+                    </View>);
+    }
+    
     return (
       <View style={styles.wrap}>
         <View style={styles.info}>
@@ -100,30 +132,7 @@ module.exports = React.createClass({
           <View style={styles.nameWrapper}>
             <Text style={styles.name}>{data.name}</Text>
             <Text style={styles.login}>{data.login}</Text>
-            <View style={styles.itemWrapper}>
-              <View style={styles.iconWrapper}>
-                <Icon name='octicons|location' size={16} color='#666666' style={styles.icon}/>
-              </View>
-              <View style={styles.textWrapper}>
-                <Text style={styles.location}>{data.location}</Text>
-              </View>
-            </View>
-            <View style={styles.itemWrapper}>
-              <View style={styles.iconWrapper}>
-                <Icon name='octicons|mail' size={16} color='#666666' style={styles.icon}/>
-              </View>
-              <View style={styles.textWrapper}>
-                <TouchableOpacity onPress={()=>{LinkingIOS.openURL('mailto:' + data.email);}}><Text style={styles.email}>{data.email}</Text></TouchableOpacity>
-              </View>
-            </View>            
-            <View style={styles.itemWrapper}>
-              <View style={styles.iconWrapper}>
-                <Icon name='octicons|link' size={16} color='#666666' style={styles.icon}/>
-              </View>
-              <View style={styles.textWrapper}>
-                <TouchableOpacity onPress={()=>{LinkingIOS.openURL(data.blog);}}><Text style={styles.blog}>{data.blog}</Text></TouchableOpacity>
-              </View>
-            </View>
+            {infoList}
           </View>
         </View>
 
@@ -143,7 +152,7 @@ module.exports = React.createClass({
         </View>
         
         <View>
-          <RepoList noScroll={true}/>
+          <RepoList />
         </View>
       </View>
     );
