@@ -94,7 +94,7 @@ module.exports = React.createClass({
     // Only display an item if it exists.
     var infoList = []
     if (data.location) {
-      infoList.push(<View style={styles.itemWrapper}>
+      infoList.push(<View key={Base.makeKey()} style={styles.itemWrapper}>
                       <View style={styles.iconWrapper}>
                         <Icon name='octicons|location' size={16} color='#666666' style={styles.icon}/>
                       </View>
@@ -104,7 +104,7 @@ module.exports = React.createClass({
                     </View>);
     } 
     if (data.email) {
-      infoList.push(<View style={styles.itemWrapper}>
+      infoList.push(<View key={Base.makeKey()} style={styles.itemWrapper}>
                       <View style={styles.iconWrapper}>
                         <Icon name='octicons|mail' size={16} color='#666666' style={styles.icon}/>
                       </View>
@@ -114,7 +114,7 @@ module.exports = React.createClass({
                     </View>);
     }
     if (data.blog) {
-      infoList.push(<View style={styles.itemWrapper}>
+      infoList.push(<View key={Base.makeKey()} style={styles.itemWrapper}>
                       <View style={styles.iconWrapper}>
                         <Icon name='octicons|link' size={16} color='#666666' style={styles.icon}/>
                       </View>
