@@ -241,7 +241,7 @@ module.exports = React.createClass({
       totalLOC += languageData[k];
     }
     for (var k in languageData) {
-      var percent = Math.round(languageData[k] / totalLOC * 100, -1);
+      var percent = (languageData[k] / totalLOC * 100).toFixed(1);
       languageStatics.push(<LanguageRow key={Base.makeKey()} name={k} percent={percent}/>);
     }
     return (
