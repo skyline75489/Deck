@@ -108,9 +108,90 @@ var Api = require('../Network/Api');
 var Icon = require("react-native-icons");
 
 module.exports = React.createClass({
+  getInitialState: function() {
+    return {
+      data: FAKE_DATA,
+    };
+  },
   render: function() {
+    var data = this.state.data;
+
+    var icon = <Icon name='octicons|repo' size={16} color='#666666' style={styles.icon}/>;
+    if (data.fork) {
+      icon = <Icon name='octicons|repoForked' size={16} color='#666666' style={styles.icon}/>;
+    }
+
     return (
-      <Text>Repo</Text>
+      <View style={styles.containter}>
+        <View style={styles.repoNameWrapper}>
+          {icon}
+          <Text style={styles.repoFullName}>{data.full_name}</Text>
+        </View>
+        <View style={styles.actionWrapper}>
+            <View style={styles.actionItemWrapper}>
+              <Icon name='octicons|eyeWatch' size={16} color='#666666' style={styles.icon}/>
+              <Text style={styles.actionText}>Watch {data.subscribers_count}</Text>
+            </View>
+
+            <View style={styles.actionItemWrapper}>
+              <Icon name='octicons|star' size={16} color='#666666' style={styles.icon}/>
+              <Text style={styles.actionText}>Star {data.watchers_count}</Text>
+            </View>
+
+            <View style={styles.actionItemWrapper}>
+              <Icon name='octicons|repoForked' size={16} color='#666666' style={styles.icon}/>
+              <Text style={styles.actionText}>Fork {data.network_count}</Text>
+            </View>
+        </View>
+
+        <View style={styles.repoDescriptionWrapper}>
+          <Text style={styles.repoDescription}>{data.description}</Text>
+        </View>
+
+        <View style={styles.languageWrapper}>
+        </View>
+      </View>
       );
   }
+});
+
+var styles = StyleSheet.create({
+  containter: {
+    backgroundColor: '#fff',
+  },
+  repoNameWrapper: {
+    flexDirection: 'row',
+    marginTop: 5,
+    padding: 10,
+  },
+  repoFullName: {
+    marginLeft: 5,
+    color: '#4183C4',
+  },
+  repoDescriptionWrapper: {
+    padding: 10,
+  },
+  repoDescription: {
+    color: '#666666',
+  },
+  actionWrapper: {
+    flex: 3,
+    flexDirection: 'row',
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  actionItemWrapper: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  actionText: {
+    color: '#666666',
+    marginLeft: 5,
+  },
+  icon: {
+    width: 15,
+    height: 15,
+  },
 });

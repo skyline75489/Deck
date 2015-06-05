@@ -560,7 +560,7 @@ module.exports = React.createClass({
       <ListView 
       dataSource={this.state.dataSource}
       renderRow={this._renderRow}
-      noScroll={this.props.noScroll}>
+      scrollEnabled={false}>
       </ListView>
     );
   },

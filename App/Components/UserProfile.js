@@ -89,6 +89,8 @@ module.exports = React.createClass({
       return this.renderLoadingView();
     }
     var data = this.state.data;
+
+    // Only display an item if it exists.
     var infoList = []
     if (data.location) {
       infoList.push(<View style={styles.itemWrapper}>
@@ -120,7 +122,7 @@ module.exports = React.createClass({
                       </View>
                     </View>);
     }
-    
+
     return (
       <View style={styles.wrap}>
         <View style={styles.info}>
