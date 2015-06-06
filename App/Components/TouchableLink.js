@@ -2,6 +2,8 @@
 
 var React = require('react-native');
 
+var Color = require("../Common/Color");
+
 var {
   StyleSheet,
   View,
@@ -28,6 +30,6 @@ module.exports = React.createClass({
 
 var styles = StyleSheet.create({
   highlightText: {
-    color: '#4183C4',
+    color: Color.github_link,
   },
 });

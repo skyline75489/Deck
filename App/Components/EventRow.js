@@ -13,6 +13,7 @@ var {
 } = React;
 
 var Base = require("../Common/Base");
+var Color = require("../Common/Color");
 
 var TouchableLink = require("./TouchableLink");
 
@@ -123,7 +124,7 @@ var styles = StyleSheet.create({
     flex: 1,
   },
   highlightText: {
-    color: '#4183C4',
+    color: Color.github_link,
   },
   link: {
     width: 29,

@@ -13,6 +13,7 @@ var {
 } = React;
 
 var Base = require("../Common/Base");
+var Color = require("../Common/Color");
 
 var Icon = require("react-native-icons");
 
@@ -59,7 +60,7 @@ var styles = StyleSheet.create({
   	flex: 0.68,
   },
   repoNameText: {
-    color: '#4183C4',
+    color: Color.github_link,
     fontWeight: 'bold',
   },
   starCountWrapper: {
@@ -68,7 +69,7 @@ var styles = StyleSheet.create({
   	marginRight: 2,
   },
   starCountText: {
-  	color: '#666666',
+  	color: Color.github_font_gray,
   	fontWeight: 'bold',
   },
   starIconWrapper: {

@@ -1,3 +1,5 @@
+'use strict';
+
 var FAKE_DATA = {
   "id": 22034841,
   "name": "pyfm",
@@ -88,12 +90,12 @@ var FAKE_DATA = {
   "subscribers_count": 14
 }
 
-LANGUAGE_DATA = {
+var LANGUAGE_DATA = {
   "JavaScript": 14351,
   "Objective-C": 4733
 };
 
-CONTRIBUTION_DATA = [
+var CONTRIBUTION_DATA = [
   {
     "login": "skyline75489",
     "id": 4710575,
@@ -170,6 +172,7 @@ var {
 } = React;
 
 var Base = require("../Common/Base");
+var Color = require("../Common/Color");
 var Api = require('../Network/Api');
 
 var LanguageRow = require('./LanguageRow');
@@ -190,13 +193,13 @@ module.exports = React.createClass({
   componentDidMount: function() { 
     var that = this;
     Api.getRepoInfo(this.props.data.repoName, function(data) {
-      if (data.message === "Not Found") {
+      console.log(data);
+      if (data.hasOwnProperty('message') && data.message === "Not Found") {
         AlertIOS.alert(
           'Error',
           'Repo not found!',
           [{text: 'OK', onPress: () => that.props.data.goBack()},]
         );
-        
         return;
       }
       that.setState({
@@ -299,13 +302,13 @@ var styles = StyleSheet.create({
   },
   repoFullName: {
     marginLeft: 5,
-    color: '#4183C4',
+    color: Color.github_link,
   },
   repoDescriptionWrapper: {
     padding: 10,
   },
   repoDescription: {
-    color: '#666666',
+    color: Color.github_font_gray,
   },
   actionWrapper: {
     flex: 3,
@@ -320,7 +323,7 @@ var styles = StyleSheet.create({
     alignItems: 'center',
   },
   actionText: {
-    color: '#666666',
+    color: Color.github_font_gray,
     marginLeft: 5,
   },
   languageWrapper: {
@@ -328,7 +331,7 @@ var styles = StyleSheet.create({
     marginLeft: 10,
   },
   gray: {
-    color: '#666666',
+    color: Color.github_font_gray,
   },
   icon: {
     width: 15,

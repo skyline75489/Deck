@@ -1,3 +1,5 @@
+'use strict';
+
 var React = require('react-native');
 var {
   StyleSheet,
@@ -6,6 +8,7 @@ var {
 } = React;
 
 var Base = require("../Common/Base");
+var Color = require("../Common/Color");
 
 module.exports = React.createClass({
   render: function() {
@@ -29,7 +32,7 @@ var styles = StyleSheet.create({
     marginBottom: 5,
   },
   languageName: {
-    color: '#666666',
+    color: Color.github_font_dark,
     fontSize: 13,
     fontWeight: 'bold',
     marginBottom: 3,

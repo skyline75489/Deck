@@ -15,6 +15,7 @@ var {
 } = React;
 
 var Base = require("../Common/Base");
+var Color = require("../Common/Color");
 
 var Icon = require("react-native-icons");
 var Router = require('react-native-router');
@@ -44,6 +45,6 @@ var styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
   },
   header: {
-    backgroundColor: '#4183C4',
+    backgroundColor: Color.github_link,
   },
 });

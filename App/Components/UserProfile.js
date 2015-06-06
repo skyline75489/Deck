@@ -49,8 +49,10 @@ var {
 } = React;
 
 var Base = require("../Common/Base");
-var RepoList = require('../Components/RepoList');
+var Color = require("../Common/Color");
 var Api = require('../Network/Api');
+
+var RepoList = require('../Components/RepoList');
 
 var Icon = require("react-native-icons");
 var Router = require('react-native-router');
@@ -185,7 +187,7 @@ var styles = StyleSheet.create({
   },
   login: {
     fontSize: 13,
-    color: '#666666',
+    color: Color.github_font_gray,
     marginBottom: 10,
   },
   icon: {
@@ -209,12 +211,12 @@ var styles = StyleSheet.create({
   email: {
     fontSize: 12,
     marginBottom: 3,
-    color: '#4183C4',
+    color: Color.github_link,
   },
   blog: {
     fontSize: 12,
     marginBottom: 3,
-    color: '#4183C4',
+    color: Color.github_link,
   },
   avatar: {
     width: 100,
@@ -242,7 +244,7 @@ var styles = StyleSheet.create({
   },
   statTitle: {
     fontSize: 12,
-    color: '#666666',
+    color: Color.github_font_gray,
   },
   loadingView: {
     justifyContent: 'center',
