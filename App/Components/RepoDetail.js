@@ -158,6 +158,25 @@ var CONTRIBUTION_DATA = [
   }
 ];
 
+var README_DATA = {
+  "name": "README.md",
+  "path": "README.md",
+  "sha": "b91d686a456440febcd3c3cf08b3d05c18f6114e",
+  "size": 267,
+  "url": "https://api.github.com/repos/skyline75489/Sunshine-React-Native/contents/README.md?ref=master",
+  "html_url": "https://github.com/skyline75489/Sunshine-React-Native/blob/master/README.md",
+  "git_url": "https://api.github.com/repos/skyline75489/Sunshine-React-Native/git/blobs/b91d686a456440febcd3c3cf08b3d05c18f6114e",
+  "download_url": "https://raw.githubusercontent.com/skyline75489/Sunshine-React-Native/master/README.md",
+  "type": "file",
+  "content": "U3Vuc2hpbmUgUmVhY3QgTmF0aXZlCj09PT09PT09PT09PT09PT09PT09PQoK\nQSBzaW1wbGUgYW5kIGluY29tcGxldGUgY2xvbmUgb2YgQW5kcm9pZCBhcHAg\nW1N1bnNoaW5lXShodHRwczovL2dpdGh1Yi5jb20vdWRhY2l0eS9TdW5zaGlu\nZSksIHBvd2VyZWQgYnkgW1JlYWN0LU5hdGl2ZV0oaHR0cHM6Ly9naXRodWIu\nY29tL2ZhY2Vib29rL3JlYWN0LW5hdGl2ZSkuCgohW3NjcmVlbnNob3RdKHN1\nbnNoaW5lLmdpZikKCkxpY2Vuc2UKPT09PT09PQoKTUlUIExpY2Vuc2UK\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/skyline75489/Sunshine-React-Native/contents/README.md?ref=master",
+    "git": "https://api.github.com/repos/skyline75489/Sunshine-React-Native/git/blobs/b91d686a456440febcd3c3cf08b3d05c18f6114e",
+    "html": "https://github.com/skyline75489/Sunshine-React-Native/blob/master/README.md"
+  }
+};
+
 var React = require('react-native');
 var {
   AsyncStorage,
@@ -173,21 +192,24 @@ var {
 
 var Base = require("../Common/Base");
 var Color = require("../Common/Color");
+var Base64 = require('../Common/Base64');
+
 var Api = require('../Network/Api');
 
 var LanguageRow = require('./LanguageRow');
 
 var Icon = require("react-native-icons");
+var Markdown = require('react-native-markdown');
 
 module.exports = React.createClass({
   getInitialState: function() {
     return {
       repoData: null,
       languageData: null,
-      contributorsData: null,
+      readmeData: null,
       repoDataReady: false,
       languageDataReady: false,
-      contributorsDataReady: false,
+      readmeDataReady: false,
     };
   },
   componentDidMount: function() { 
@@ -212,12 +234,20 @@ module.exports = React.createClass({
         languageDataReady: true,
       });
     });
-    Api.getRepoContributors(this.props.data.repoName, function(data) {
+    /*Api.getRepoContributors(this.props.data.repoName, function(data) {
       that.setState({
         contributorsData: data,
         contributorsDataReady: true,
       });
     });
+    */
+    Api.getRepoReadme(this.props.data.repoName, function(data) {
+      that.setState({
+        readmeData: data,
+        readmeDataReady: true,
+      });
+    });
+
   },
   renderLoadingView: function() { 
     return ( 
@@ -236,11 +266,14 @@ module.exports = React.createClass({
   render: function() {
     if (! (this.state.repoDataReady &&
        this.state.languageDataReady &&
-       this.state.contributorsDataReady)) {
+       this.state.readmeDataReady)) {
       return this.renderLoadingView();
     }
     var data = this.state.repoData;
     var languageData = this.state.languageData;
+    var readmeData = this.state.readmeData;
+    var readmeContent = Base64.decode(readmeData.content);
+
     var icon = <Icon name='octicons|repo' size={16} color='#666666' style={styles.icon}/>;
     if (data.fork) {
       icon = <Icon name='octicons|repoForked' size={16} color='#666666' style={styles.icon}/>;
@@ -256,7 +289,7 @@ module.exports = React.createClass({
       languageStatics.push(<LanguageRow key={Base.makeKey()} name={k} percent={percent}/>);
     }
     return (
-      <View style={styles.containter}>
+      <ScrollView style={styles.containter}>
         <View style={styles.repoNameWrapper}>
           {icon}
           <Text style={styles.repoFullName}>{data.full_name}</Text>
@@ -285,7 +318,11 @@ module.exports = React.createClass({
         <View style={styles.languageWrapper}>
           {languageStatics}
         </View>
-      </View>
+
+        <View style={styles.readmeWrapper}>
+          <Text>{readmeContent}</Text>
+        </View>
+      </ScrollView>
       );
   }
 });
@@ -343,6 +380,9 @@ var styles = StyleSheet.create({
   icon: {
     width: 15,
     height: 15,
+  },
+  readmeWrapper: {
+    padding: 10,
   },
   loadingView: {
     justifyContent: 'center',

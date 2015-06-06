@@ -8,6 +8,7 @@
   "dependencies": {
     "react-native": "^0.4.4",
     "react-native-icons": "0.0.8",
+    "react-native-markdown": "^0.1.1",
     "react-native-router": "^0.1.3"
   }
 }
