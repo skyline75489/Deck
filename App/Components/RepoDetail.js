@@ -164,7 +164,7 @@ var {
   Text,
   Image,
   TouchableOpacity,
-  TouchableHighlight,
+  AlertIOS,
   ScrollView,
   ActivityIndicatorIOS,
 } = React;
@@ -190,6 +190,15 @@ module.exports = React.createClass({
   componentDidMount: function() { 
     var that = this;
     Api.getRepoInfo(this.props.data.repoName, function(data) {
+      if (data.message === "Not Found") {
+        AlertIOS.alert(
+          'Error',
+          'Repo not found!',
+          [{text: 'OK', onPress: () => that.props.data.goBack()},]
+        );
+        
+        return;
+      }
       that.setState({
         repoData: data,
         repoDataReady: true,

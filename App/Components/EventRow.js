@@ -26,7 +26,6 @@ module.exports = React.createClass({
   goToRepo: function(repoName) {
     this.props.goToRepo(repoName);
   },
-
   render: function() {
     var data = this.props.data;
     switch(data.type) {
@@ -71,6 +70,7 @@ module.exports = React.createClass({
                     displayText={data.repo.name}
                     routeFunction={this.goToRepo}
                     routeParameter={data.repo.name}
+                    goBack={this.goBack}
                   />;
 
     return (

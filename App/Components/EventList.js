@@ -352,7 +352,7 @@ module.exports = React.createClass({
     this.props.toRoute({
       name: repoName,
       component: RepoDetail,
-      data: {repoName: repoName},
+      data: {repoName: repoName, goBack: this.props.toBack},
     });
   },
   getInitialState: function() {
