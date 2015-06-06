@@ -31,6 +31,7 @@ var styles = StyleSheet.create({
   languageName: {
     color: '#666666',
     fontSize: 13,
+    fontWeight: 'bold',
     marginBottom: 3,
   },
 });
