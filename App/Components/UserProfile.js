@@ -53,23 +53,40 @@ var Color = require("../Common/Color");
 var Api = require('../Network/Api');
 
 var RepoList = require('../Components/RepoList');
+var RepoDetail = require('./RepoDetail');
 
 var Icon = require("react-native-icons");
 var Router = require('react-native-router');
 
 module.exports = React.createClass({
+  goToRepo: function(repoName) {
+    // repoName is actully 'owner/repo'
+    this.props.toRoute({
+      name: repoName,
+      component: RepoDetail,
+      data: {repoName: repoName, goBack: this.props.toBack},
+    });
+  },
   getInitialState: function() {
     return {
-      data: null,
-      loaded: false,
+      profileData: null,
+      profileDataReady: false,
+      repoListData: null,
+      repoListDataReady: false,
     };
   },
   componentDidMount: function() { 
     var that = this;
     Api.getUserProfile(this.props.data.username, function(data) {
       that.setState({
-        data: data,
-        loaded: true,
+        profileData: data,
+        profileDataReady: true,
+      });
+    });
+    Api.getUserRecentlyPushedRepo(this.props.data.username, 1, 5, function(data) {
+      that.setState({
+        repoListData: data,
+        repoListDataReady: true,
       });
     });
   },
@@ -88,10 +105,10 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    if (!this.state.loaded) {
+    if (!(this.state.profileDataReady && this.state.repoListDataReady)) {
       return this.renderLoadingView();
     }
-    var data = this.state.data;
+    var data = this.state.profileData;
 
     // Only display an item if it exists.
     var infoList = []
@@ -156,8 +173,8 @@ module.exports = React.createClass({
             </View>
         </View>
         
-        <View>
-          <RepoList />
+        <View style={styles.repoListWrapper}>
+          <RepoList scrollEnabled={false} dataSource={this.state.repoListData} goToRepo={this.goToRepo}/>
         </View>
       </View>
     );
@@ -245,6 +262,9 @@ var styles = StyleSheet.create({
   statTitle: {
     fontSize: 12,
     color: Color.github_font_gray,
+  },
+  repoListWrapper: {
+    height: 200,
   },
   loadingView: {
     justifyContent: 'center',

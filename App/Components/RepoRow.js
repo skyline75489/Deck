@@ -18,6 +18,9 @@ var Color = require("../Common/Color");
 var Icon = require("react-native-icons");
 
 module.exports = React.createClass({
+  goToRepo: function() {
+    this.props.goToRepo(this.props.data.full_name);
+  },
   render: function() {
     var data = this.props.data;
     var icon = <Icon name='octicons|repo' size={16} color='#666666' style={styles.icon}/>;
@@ -26,20 +29,23 @@ module.exports = React.createClass({
     }
  
   	return (
-      <View style={styles.containter}>
-        <View style={styles.repoIconWrapper}>
-          {icon}
+      <TouchableOpacity onPress={this.goToRepo}>
+        <View style={styles.containter}>
+          <View style={styles.repoIconWrapper}>
+            {icon}
+          </View>
+          <View style={styles.repoNameWrapper}>
+            <Text style={styles.repoNameText}>{data.name}</Text>
+          </View>
+          <View style={styles.starCountWrapper}>
+            <Text style={styles.starCountText}>{data.stargazers_count}</Text>
+          </View>
+          <View style={styles.starIconWrapper}>
+            <Icon name='octicons|star' size={16} color='#666666' style={styles.icon}/>
+          </View>
         </View>
-        <View style={styles.repoNameWrapper}>
-          <Text style={styles.repoNameText}>{data.name}</Text>
-        </View>
-        <View style={styles.starCountWrapper}>
-          <Text style={styles.starCountText}>{data.stargazers_count}</Text>
-        </View>
-        <View style={styles.starIconWrapper}>
-          <Icon name='octicons|star' size={16} color='#666666' style={styles.icon}/>
-        </View>
-      </View>
+      </TouchableOpacity>
+
   	);
   }
 });
