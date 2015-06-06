@@ -484,7 +484,7 @@ var styles = StyleSheet.create({
   row: {
     flex: 1,
     paddingLeft: 20,
-    paddingTop: 5,
+    paddingTop: 10,
     paddingBottom: 10,
     overflow: 'hidden',
     borderBottomWidth: 0.5,

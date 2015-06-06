@@ -193,7 +193,6 @@ module.exports = React.createClass({
   componentDidMount: function() { 
     var that = this;
     Api.getRepoInfo(this.props.data.repoName, function(data) {
-      console.log(data);
       if (data.hasOwnProperty('message') && data.message === "Not Found") {
         AlertIOS.alert(
           'Error',
@@ -299,6 +298,8 @@ var styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 5,
     padding: 10,
+    borderBottomWidth: 0.5,
+    borderColor: Color.github_border_light_gray,
   },
   repoFullName: {
     marginLeft: 5,
@@ -306,6 +307,8 @@ var styles = StyleSheet.create({
   },
   repoDescriptionWrapper: {
     padding: 10,
+    borderBottomWidth: 0.5,
+    borderColor: Color.github_border_light_gray,
   },
   repoDescription: {
     color: Color.github_font_gray,
@@ -313,8 +316,10 @@ var styles = StyleSheet.create({
   actionWrapper: {
     flex: 3,
     flexDirection: 'row',
-    marginTop: 10,
-    marginBottom: 10,
+    paddingTop: 10,
+    paddingBottom : 10,
+    borderBottomWidth: 0.5,
+    borderColor: Color.github_border_light_gray,
   },
   actionItemWrapper: {
     flex: 1,
@@ -328,7 +333,9 @@ var styles = StyleSheet.create({
   },
   languageWrapper: {
     flex: 1,
-    marginLeft: 10,
+    padding: 10,
+    borderBottomWidth: 0.5,
+    borderColor: Color.github_border_light_gray,
   },
   gray: {
     color: Color.github_font_gray,

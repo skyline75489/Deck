@@ -242,6 +242,7 @@ var styles = StyleSheet.create({
   stat: {
     flex: 3,
     flexDirection: 'row',
+    paddingBottom: 10,
   },
   followers: {
     flex: 1,
@@ -264,7 +265,8 @@ var styles = StyleSheet.create({
     color: Color.github_font_gray,
   },
   repoListWrapper: {
-    height: 200,
+    top: -10,
+    height: 220,
   },
   loadingView: {
     justifyContent: 'center',

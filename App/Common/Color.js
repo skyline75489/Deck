@@ -175,6 +175,7 @@ var github_font_gray = '#666666';
 var github_font_dark = '#4E575B';
 var github_background_gray = '#F5F5F5';
 var github_border_gray = '#E5E5E5';
+var github_border_light_gray = '#F1F1F1';
 
 module.exports = {
   github_language_color: github_language_color,
@@ -183,4 +184,5 @@ module.exports = {
   github_font_dark: github_font_dark,
   github_background_gray: github_background_gray,
   github_border_gray: github_border_gray,
-}
+  github_border_light_gray: github_border_light_gray,
+};

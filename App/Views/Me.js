@@ -43,7 +43,6 @@ module.exports = React.createClass({
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF'
   },
   header: {
     backgroundColor: Color.github_link,
