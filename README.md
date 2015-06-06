@@ -11,3 +11,9 @@ Still under development.
 
 ![3](./Screenshots/3.png)
 
+
+License
+=======
+
+MIT License
+
