@@ -3,7 +3,8 @@ Deck
 
 A tiny Github client, powered by [React Native](https://github.com/facebook/react-native). 
 
-Still under development.
+**Warning**: This project is still under development.
+
 
 ![1](./Screenshots/1.png)
 
