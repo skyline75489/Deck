@@ -52,6 +52,12 @@ var Api = {
     return this.doRequest(url, callback);
   },
 
+  getUserReceivedEventsPromise: function(username) {
+    var url = 'https://api.github.com/users/' + username + '/received_events';
+    return fetch(url, {headers: myHeaders})
+           .then((response) => response.json());
+  },
+
   getRepoInfo: function(repoName, callback) {
     var url = 'https://api.github.com/repos/' + repoName;
     return this.doRequest(url, callback);

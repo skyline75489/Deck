@@ -21,6 +21,8 @@ var UserProfile = require('./UserProfile');
 var RepoDetail = require('./RepoDetail');
 var EventRow = require('./EventRow');
 
+var RefreshableListView = require('react-native-refreshable-listview');
+
 module.exports = React.createClass({
   goToUser: function(username) {
     this.props.toRoute({
@@ -62,16 +64,21 @@ module.exports = React.createClass({
       </View>
     );
   },
+  fetchNewData: function() {
+    return Api.getUserReceivedEventsPromise(this.props.data.username);
+  },
   render: function() {
     if (!this.state.dataReady) {
       return this.renderLoadingView();
     }
     return(
-      <View style={styles.wrap}>
-      <ListView dataSource={this.state.dataSource}
-      renderRow={this._renderRow}>
-      </ListView>
-      </View>
+        <RefreshableListView
+          dataSource={this.state.dataSource}
+          renderRow={this._renderRow}
+          loadData={this.fetchNewData}
+          refreshDescription="Refreshing"
+          refreshingIndictatorComponent={this.renderLoadingView()}
+        />
     );
   },
   renderLoadingView: function() { 
