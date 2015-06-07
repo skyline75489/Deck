@@ -1,5 +1,6 @@
 'use strict';
 
+// From https://github.com/doda/github-language-colors
 var github_language_color = {
     "Mercury": "#abcdef", 
     "TypeScript": "#31859c", 
