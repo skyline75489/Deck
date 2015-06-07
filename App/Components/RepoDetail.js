@@ -81,6 +81,8 @@ module.exports = React.createClass({
        this.state.contributorsDataReady)) {
       return this.renderLoadingView();
     }
+
+    // Repo icon and full name
     var data = this.state.repoData;
     var languageData = this.state.languageData;
     var icon = <Icon name='octicons|repo' size={16} color='#666666' style={styles.icon}/>;
@@ -88,6 +90,16 @@ module.exports = React.createClass({
       icon = <Icon name='octicons|repoForked' size={16} color='#666666' style={styles.icon}/>;
     }
 
+    // Repo Description, only display if it exists.
+    var RepoDescription;
+    if (data.description) {
+      RepoDescription = <View style={styles.repoDescriptionWrapper}>
+                          <Text style={styles.repoDescription}>{data.description}</Text>
+                        </View>;
+
+    }
+
+    // Language Statistics
     var languageStatics = [];
     var totalLOC = 0;
     for (var k in languageData) {
@@ -97,6 +109,7 @@ module.exports = React.createClass({
       var percent = (languageData[k] / totalLOC * 100).toFixed(1);
       languageStatics.push(<LanguageRow key={Base.makeKey()} name={k} percent={percent}/>);
     }
+
     return (
       <View style={styles.containter}>
         <View style={styles.repoNameWrapper}>
@@ -120,9 +133,7 @@ module.exports = React.createClass({
             </View>
         </View>
 
-        <View style={styles.repoDescriptionWrapper}>
-          <Text style={styles.repoDescription}>{data.description}</Text>
-        </View>
+        {RepoDescription}
 
         <View style={styles.languageWrapper}>
           {languageStatics}
