@@ -1,37 +1,3 @@
-var FAKE_DATA = {
-  "login": "skyline75489",
-  "id": 4710575,
-  "avatar_url": "https://avatars.githubusercontent.com/u/4710575?v=3",
-  "gravatar_id": "",
-  "url": "https://api.github.com/users/skyline75489",
-  "html_url": "https://github.com/skyline75489",
-  "followers_url": "https://api.github.com/users/skyline75489/followers",
-  "following_url": "https://api.github.com/users/skyline75489/following{/other_user}",
-  "gists_url": "https://api.github.com/users/skyline75489/gists{/gist_id}",
-  "starred_url": "https://api.github.com/users/skyline75489/starred{/owner}{/repo}",
-  "subscriptions_url": "https://api.github.com/users/skyline75489/subscriptions",
-  "organizations_url": "https://api.github.com/users/skyline75489/orgs",
-  "repos_url": "https://api.github.com/users/skyline75489/repos",
-  "events_url": "https://api.github.com/users/skyline75489/events{/privacy}",
-  "received_events_url": "https://api.github.com/users/skyline75489/received_events",
-  "type": "User",
-  "site_admin": false,
-  "name": "Liu Jialiang",
-  "company": "",
-  "blog": "http://byskyline.me",
-  "location": "Harbin, Heilongjiang, China",
-  "email": "skyline75489@outlook.com",
-  "hireable": true,
-  "bio": null,
-  "public_repos": 39,
-  "public_gists": 1,
-  "followers": 159,
-  "following": 111,
-  "created_at": "2013-06-16T11:25:35Z",
-  "updated_at": "2015-05-29T01:35:26Z"
-}
-
-
 'use strict';
 
 var React = require('react-native');
