@@ -25,7 +25,8 @@ var EventListView = require('../Components/EventList');
 module.exports = React.createClass({
   firstRoute: {
     name: 'Dashboard',
-    component: EventListView
+    component: EventListView,
+    data: {username: 'skyline75489'},
   },
   render: function() {
     return (

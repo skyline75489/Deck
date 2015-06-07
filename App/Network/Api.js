@@ -6,6 +6,19 @@ var myHeaders = new Headers();
 myHeaders.append('Authorization', Secrets.token);
 
 var Api = {
+  doRequest: function(url, callback) {
+    fetch(url, {headers: myHeaders})
+    .then((response) => response.json())
+    .then(function(ret) {
+      callback && callback(ret);
+    })
+    .catch((err) => {
+      console.log(err);
+      return callback && callback(false);
+    })
+    .done();
+  },
+
   getUserProfile: function (username, callback) {
     var url = 'https://api.github.com/users/' + username;
     fetch(url, {headers: myHeaders})
@@ -33,76 +46,36 @@ var Api = {
     })
     .done();
   },
+
+  getUserReceivedEvents: function(username, callback) {
+    var url = 'https://api.github.com/users/' + username + '/received_events';
+    return this.doRequest(url, callback);
+  },
+
   getRepoInfo: function(repoName, callback) {
     var url = 'https://api.github.com/repos/' + repoName;
-    fetch(url, {headers: myHeaders})
-    .then((response) => response.json())
-    .then(function(ret) {
-      callback && callback(ret);
-    })
-    .catch((err) => {
-      console.log(err);
-      return callback && callback(false);
-    })
-    .done();
+    return this.doRequest(url, callback);
   },
 
   getRepoLanguage: function(repoName, callback) {
     var url = 'https://api.github.com/repos/' + repoName + '/languages';
-    fetch(url, {headers: myHeaders})
-    .then((response) => response.json())
-    .then(function(ret) {
-      callback && callback(ret);
-    })
-    .catch((err) => {
-      console.log(err);
-      return callback && callback(false);
-    })
-    .done();
+    return this.doRequest(url, callback);
   },
 
   getRepoContributors: function(repoName, callback) {
     var url = 'https://api.github.com/repos/' + repoName + '/contributors';
-    fetch(url, {headers: myHeaders})
-    .then((response) => response.json())
-    .then(function(ret) {
-      callback && callback(ret);
-    })
-    .catch((err) => {
-      console.log(err);
-      return callback && callback(false);
-    })
-    .done();
+    return this.doRequest(url, callback);
   },
 
   getRepoReadme: function(repoName, callback) {
     var url = 'https://api.github.com/repos/' + repoName + '/readme';
-    fetch(url, {headers: myHeaders})
-    .then((response) => response.json())
-    .then(function(ret) {
-      callback && callback(ret);
-    })
-    .catch((err) => {
-      console.log(err);
-      return callback && callback(false);
-    })
-    .done();
+    return this.doRequest(url, callback);
   },
 
   getUserRecentlyPushedRepo: function(username, page_count, per_page, callback) {
     var url = 'https://api.github.com/users/' + username + '/repos?sort=pushed&page=' + page_count + '&per_page=' + per_page;
-    fetch(url, {headers: myHeaders})
-    .then((response) => response.json())
-    .then(function(ret) {
-      callback && callback(ret);
-    })
-    .catch((err) => {
-      console.log(err);
-      return callback && callback(false);
-    })
-    .done();
+    return this.doRequest(url, callback);
   },
-
 };
 
 module.exports = Api;

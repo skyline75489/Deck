@@ -10,14 +10,16 @@ var {
   Image,
   TouchableHighlight,
   TouchableOpacity,
-  StatusBarIOS
+  StatusBarIOS,
+  ActivityIndicatorIOS,
 } = React;
 
-var EventRow = require('./EventRow')
 var Base = require("../Common/Base");
+var Api = require('../Network/Api');
 
 var UserProfile = require('./UserProfile');
 var RepoDetail = require('./RepoDetail');
+var EventRow = require('./EventRow');
 
 var FAKE_DATA = [
   {
@@ -358,9 +360,21 @@ module.exports = React.createClass({
   getInitialState: function() {
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     return {
-      dataSource: ds.cloneWithRows(FAKE_DATA),
+      dataSource: ds,
+      dateReady: false,
     };
   },
+
+  componentDidMount: function() { 
+    var me = this;
+    Api.getUserReceivedEvents(this.props.data.username, function(data){
+      me.setState({
+        dataSource: me.state.dataSource.cloneWithRows(data),
+        dataReady: true,
+      });
+    });
+  },
+
   _renderRow: function(data) {
     return (
       <View style={styles.row}>
@@ -369,6 +383,9 @@ module.exports = React.createClass({
     );
   },
   render: function() {
+    if (!this.state.dataReady) {
+      return this.renderLoadingView();
+    }
     return(
       <View style={styles.wrap}>
       <ListView dataSource={this.state.dataSource}
@@ -377,6 +394,20 @@ module.exports = React.createClass({
       </View>
     );
   },
+  renderLoadingView: function() { 
+    return ( 
+      <View style={styles.loadingView}>
+      <View>
+        <ActivityIndicatorIOS
+          animating={true}
+          style={{height: 30}}
+          size="small"
+        />
+      </View>
+      </View>
+    ); 
+  },
+
 });
 
 var styles = StyleSheet.create({
@@ -394,6 +425,12 @@ var styles = StyleSheet.create({
     borderBottomWidth: 0.5,
     borderColor: '#F1F1F1',
   },
+  loadingView: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+
 });
 
 
