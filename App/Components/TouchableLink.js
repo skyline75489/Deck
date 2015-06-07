@@ -13,12 +13,9 @@ var {
 } = React;
 
 module.exports = React.createClass({
-  goToNextRoute: function() {
-    this.props.routeFunction(this.props.routeParameter);
-  },
   render: function() {
     return (<TouchableOpacity 
-            onPress={this.goToNextRoute} 
+            onPress={this.props.onPress} 
             >
               <Text style={styles.highlightText}>
               {this.props.displayText}

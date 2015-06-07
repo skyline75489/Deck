@@ -51,8 +51,9 @@ module.exports = React.createClass({
                       <Text>{actionDescription}</Text>
                       <TouchableLink 
                         displayText={data.payload.member.login} 
-                        routeFunction={this.goToUser} 
-                        routeParameter={data.payload.member.login}
+                        onPress={()=>{
+                          this.goToUser(data.payload.member.login);
+                        }}
                       />
                       <Text> to </Text>
                     </View>;
@@ -62,15 +63,17 @@ module.exports = React.createClass({
     var actor = <TouchableLink 
                   style={styles.actor} 
                   displayText={data.actor.login} 
-                  routeFunction={this.goToUser} 
-                  routeParameter={data.actor.login}
+                  onPress={()=>{
+                    this.goToUser(data.actor.login);
+                  }}
                 />;
 
     var payload = <TouchableLink 
                     style={styles.payload}
                     displayText={data.repo.name}
-                    routeFunction={this.goToRepo}
-                    routeParameter={data.repo.name}
+                    onPress={()=>{
+                      this.goToRepo(data.repo.name);
+                    }}
                     goBack={this.goBack}
                   />;
 
