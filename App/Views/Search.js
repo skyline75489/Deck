@@ -33,7 +33,7 @@ var SearchTextInput = React.createClass({
     this.refs.input.blur();
   },
   render: function() {
-    var placeholder = 'Search ' + this.state.currentSearchType;
+    var placeholder = `Search ${this.state.currentSearchType}`;
     return (
       <TextInput 
         ref="input"

@@ -20,11 +20,11 @@ var Api = {
   },
 
   getUserProfile: function (username, callback) {
-    var url = 'https://api.github.com/users/' + username;
+    var url = `https://api.github.com/users/${username}`;
     fetch(url, {headers: myHeaders})
     .then((response) => response.json())
     .then(function(ret) {
-      var url = 'https://api.github.com/users/' + username + '/starred?per_page=1';
+      var url = `https://api.github.com/users/${username}/starred?per_page=1`;
       fetch(url, {method: 'HEAD', headers: myHeaders,})
       .then((response) => response.headers)
       .then(function(headers) {
@@ -48,43 +48,43 @@ var Api = {
   },
 
   getUserReceivedEvents: function(username, callback) {
-    var url = 'https://api.github.com/users/' + username + '/received_events';
+    var url = `https://api.github.com/users/${username}/received_events`;
     return this.doRequest(url, callback);
   },
 
   getUserReceivedEventsPromise: function(username) {
-    var url = 'https://api.github.com/users/' + username + '/received_events';
+    var url = `https://api.github.com/users/${username}/received_events`;
     return fetch(url, {headers: myHeaders})
            .then((response) => response.json());
   },
 
   getRepoInfo: function(repoName, callback) {
-    var url = 'https://api.github.com/repos/' + repoName;
+    var url = `https://api.github.com/repos/${repoName}`;
     return this.doRequest(url, callback);
   },
 
   getRepoLanguage: function(repoName, callback) {
-    var url = 'https://api.github.com/repos/' + repoName + '/languages';
+    var url = `https://api.github.com/repos/${repoName}/languages`;
     return this.doRequest(url, callback);
   },
 
   getRepoContributors: function(repoName, callback) {
-    var url = 'https://api.github.com/repos/' + repoName + '/contributors';
+    var url = `https://api.github.com/repos/${repoName}/contributors`;
     return this.doRequest(url, callback);
   },
 
   getRepoReadme: function(repoName, callback) {
-    var url = 'https://api.github.com/repos/' + repoName + '/readme';
+    var url = `https://api.github.com/repos/${repoName}/readme`;
     return this.doRequest(url, callback);
   },
 
   getUserRecentlyPushedRepo: function(username, page_count, per_page, callback) {
-    var url = 'https://api.github.com/users/' + username + '/repos?sort=pushed&page=' + page_count + '&per_page=' + per_page;
+    var url = `https://api.github.com/users/${username}/repos?sort=pushed&page=${page_count}&per_page=${per_page}`;
     return this.doRequest(url, callback);
   },
 
   getSearchRepo: function(query, callback) {
-    var url = 'https://api.github.com/search/repositories?q=' + query;
+    var url = `https://api.github.com/search/repositories?q=${query}`;
     return this.doRequest(url, callback);
   }
 };
