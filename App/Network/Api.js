@@ -82,6 +82,11 @@ var Api = {
     var url = 'https://api.github.com/users/' + username + '/repos?sort=pushed&page=' + page_count + '&per_page=' + per_page;
     return this.doRequest(url, callback);
   },
+
+  getSearchRepo: function(query, callback) {
+    var url = 'https://api.github.com/search/repositories?q=' + query;
+    return this.doRequest(url, callback);
+  }
 };
 
 module.exports = Api;
