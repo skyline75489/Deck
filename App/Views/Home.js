@@ -17,6 +17,8 @@ var SMXTabBarItemIOS = SMXTabBarIOS.Item;
 
 var Dashboard = require('./Dashboard');
 var Activity = require('./Activity');
+var Search = require('./Search');
+
 var Me = require('./Me');
 
 module.exports = React.createClass({
@@ -35,6 +37,8 @@ module.exports = React.createClass({
         return <Activity navigator={this.props.nav}/>;
       case 'me':
         return <Me navigator={this.props.nav}/>;
+      case 'search':
+        return <Search navigator={this.props.nav}/>;
       default:
         return (
           <View>
