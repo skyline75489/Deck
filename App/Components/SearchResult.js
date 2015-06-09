@@ -14,11 +14,9 @@ var {
   StatusBarIOS
 } = React;
 
-var Base = require("../Common/Base");
+var Base = require('../Common/Base');
 var Api = require('../Network/Api');
 
-var UserProfile = require('./UserProfile');
-var RepoDetail = require('./RepoDetail');
 var RepoRow = require('./RepoRow');
 var UserRow = require('./UserRow');
 
@@ -34,7 +32,7 @@ module.exports = React.createClass({
     };
   },
   doSearch: function(query, option) {
-    var me = this;
+    var self = this;
     this.setState({
       empty: false,
       rowDataReady: false
@@ -42,31 +40,31 @@ module.exports = React.createClass({
 
     if (option === 'Repo') {
       Api.getSearchRepo(query, function(data) {
-        me.setState({
+        self.setState({
           empty: false,
           option: option,
           rowData: data.items,
           rowDataReady: true,
-          dataSource: me.state.dataSource.cloneWithRows(data.items),
+          dataSource: self.state.dataSource.cloneWithRows(data.items),
         });
       });
-    } else if(option === 'User') {
+    } else if (option === 'User') {
       Api.getSearchUser(query, function(data) {
-        me.setState({
+        self.setState({
           empty: false,
           option: option,
           rowData: data.items,
           rowDataReady: true,
-          dataSource: me.state.dataSource.cloneWithRows(data.items),
+          dataSource: self.state.dataSource.cloneWithRows(data.items),
         });
       });
     }
   },
   _renderRow: function(data) {
     if (this.state.option === 'Repo') {
-      var Row = <RepoRow data={data} goToRepo={this.props.goToRepo}/>
+      var Row = <RepoRow data={data} goToRepo={this.props.goToRepo}/>;
     } else if (this.state.option === 'User') {
-      var Row = <UserRow data={data} goToUser={this.props.goToUser}/>
+      var Row = <UserRow data={data} goToUser={this.props.goToUser}/>;
     }
      return (
       <View style={styles.row}>
@@ -74,8 +72,8 @@ module.exports = React.createClass({
       </View>
     );
   },
-  renderLoadingView: function() { 
-    return ( 
+  renderLoadingView: function() {
+    return (
       <View style={styles.loadingView}>
         <View>
           <ActivityIndicatorIOS
@@ -85,21 +83,21 @@ module.exports = React.createClass({
           />
         </View>
       </View>
-    ); 
+    );
   },
 
   render: function() {
     if (this.state.empty) {
-      return <View></View>;
+      return <View />;
     } else if (!this.state.rowDataReady) {
       return this.renderLoadingView();
     }
     return (
-      <ListView 
+      <ListView
         dataSource={this.state.dataSource}
         renderRow={this._renderRow}
-        scrollEnabled={this.props.scrollEnabled}>
-      </ListView>
+        scrollEnabled={this.props.scrollEnabled}
+      />
     );
   },
 });

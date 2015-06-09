@@ -12,12 +12,12 @@ var {
   TouchableOpacity,
 } = React;
 
-var Base = require("../Common/Base");
-var Color = require("../Common/Color");
+var Base = require('../Common/Base');
+var Color = require('../Common/Color');
 
-var TouchableLink = require("./TouchableLink");
+var TouchableLink = require('./TouchableLink');
 
-var Icon = require("react-native-icons");
+var Icon = require('react-native-icons');
 
 module.exports = React.createClass({
   goToUser: function(username) {
@@ -29,21 +29,21 @@ module.exports = React.createClass({
   },
   render: function() {
     var data = this.props.data;
-    switch(data.type) {
+    switch (data.type) {
       case 'CreateEvent':
         var actionDescription = ' created repository ';
         var action = <Text style={styles.action}>{actionDescription}</Text>;
-        var icon = <Icon name='octicons|repo' size={16} color='#666666' style={styles.icon}/>;
+        var icon = <Icon name="octicons|repo" size={16} color="#666666" style={styles.icon}/>;
         break;
       case 'WatchEvent':
         var actionDescription = ' starred ';
         var action = <Text style={styles.action}>{actionDescription}</Text>;
-        var icon = <Icon name='octicons|star' size={16} color='#666666' style={styles.icon}/>;
+        var icon = <Icon name="octicons|star" size={16} color="#666666" style={styles.icon}/>;
         break;
       case 'ForkEvent':
         var actionDescription = ' forked ';
         var action = <Text style={styles.action}>{actionDescription}</Text>;
-        var icon = <Icon name='octicons|repoForked' size={16} color='#666666' style={styles.icon}/>;
+        var icon = <Icon name="octicons|repoForked" size={16} color="#666666" style={styles.icon}/>;
         break;
       case 'MemberEvent':
         var actionDescription = ' added ';

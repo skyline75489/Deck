@@ -14,9 +14,9 @@ var {
   ScrollView
 } = React;
 
-var Base = require("../Common/Base");
+var Base = require('../Common/Base');
 
-var Icon = require("react-native-icons");
+var Icon = require('react-native-icons');
 var Router = require('react-native-router');
 
 module.exports = React.createClass({

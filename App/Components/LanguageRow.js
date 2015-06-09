@@ -7,8 +7,8 @@ var {
   Text,
 } = React;
 
-var Base = require("../Common/Base");
-var Color = require("../Common/Color");
+var Base = require('../Common/Base');
+var Color = require('../Common/Color');
 
 module.exports = React.createClass({
   render: function() {
@@ -22,8 +22,7 @@ module.exports = React.createClass({
            {height: 5},
            {backgroundColor: Color.github_language_color[k]}]
          }
-        >
-        </View>
+        />
       </View>
     );
   }

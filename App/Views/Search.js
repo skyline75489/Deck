@@ -16,15 +16,14 @@ var {
 
 var ActionSheetIOS = require('ActionSheetIOS');
 
-var Base = require("../Common/Base");
-var Color = require("../Common/Color");
+var Base = require('../Common/Base');
+var Color = require('../Common/Color');
 
 var UserProfile = require('../Components/UserProfile');
 var RepoDetail = require('../Components/RepoDetail');
-var SearchResult = require("../Components/SearchResult");
+var SearchResult = require('../Components/SearchResult');
 
-var Icon = require("react-native-icons");
-var Router = require('react-native-router');
+var Icon = require('react-native-icons');
 
 var ACTION_OPTIONS = ['Repo', 'User'];
 
@@ -43,14 +42,14 @@ var SearchTextInput = React.createClass({
   render: function() {
     var placeholder = `Search ${this.state.currentSearchType}`;
     return (
-      <TextInput 
+      <TextInput
         ref="input"
         style={styles.input}
-        autoCapitalize="none" 
+        autoCapitalize="none"
         autoFocus={true}
         autoCorrect={false}
-        returnKeyType={'search'} 
-        placeholder={placeholder} 
+        returnKeyType={'search'}
+        placeholder={placeholder}
         onSubmitEditing={this.handleSubmit}
         onChangeText={(text) => this.setState({input: text})}
       />
@@ -61,11 +60,11 @@ var SearchTextInput = React.createClass({
 var SearchIcon = React.createClass({
   render: function() {
     return (
-      <TouchableOpacity 
+      <TouchableOpacity
         onPress={()=>{
           this.props.customAction({action: 'search'});
         }}>
-        <Icon name='octicons|search' size={16} color='white' style={styles.icon}/>
+        <Icon name="octicons|search" size={16} color="white" style={styles.icon}/>
       </TouchableOpacity>
     );
   },
@@ -78,7 +77,7 @@ var SearchOption = React.createClass({
       <TouchableOpacity onPress={()=>{
           this.props.customAction({action: 'option'});
         }}>
-        <Icon name='octicons|threeBars' size={16} color='white' style={styles.icon}/>
+        <Icon name="octicons|threeBars" size={16} color="white" style={styles.icon}/>
       </TouchableOpacity>
     );
   },
@@ -108,7 +107,7 @@ var Search = React.createClass({
   showActionSheet: function() {
     ActionSheetIOS.showActionSheetWithOptions({
       options: ACTION_OPTIONS,
-    }, 
+    },
     (buttonIndex) => {
       this.setState({
         currentSearchType: ACTION_OPTIONS[buttonIndex]
@@ -119,7 +118,7 @@ var Search = React.createClass({
     });
   },
   customAction: function(event) {
-    switch(event.action) {
+    switch (event.action) {
       case 'option':
         this.showActionSheet();
         break;
@@ -144,7 +143,7 @@ var Search = React.createClass({
           <SearchIcon style={[styles.corner, styles.alignLeft]} customAction={this.customAction} />
         </View>
         <View style={styles.searchResult}>
-          <SearchResult 
+          <SearchResult
             ref="search"
             goToUser={this.goToUser}
             goToRepo={this.goToRepo}
@@ -165,7 +164,7 @@ module.exports = React.createClass({
       },
       dragStartX: null,
       didSwitchView: null,
-    }
+    };
   },
   onBack: function(navigator) {
     if (this.state.route.index > 0) {
@@ -196,7 +195,7 @@ module.exports = React.createClass({
 
     if (route.name === 'search') {
       return (
-        <Search 
+        <Search
           nav={navigator}
           toRoute={goForward}
           toBack={goBackwards}
@@ -219,7 +218,7 @@ module.exports = React.createClass({
   },
   render: function() {
     return (
-      <Navigator 
+      <Navigator
         initialRoute={{name: 'search', index: 0}}
         renderScene={this._renderScene}
       />
@@ -261,7 +260,7 @@ var styles = StyleSheet.create({
     width: 32,
     height: 32,
     marginTop: 4,
-    marginLeft: 0, 
+    marginLeft: 0,
     marginRight: 0,
   },
   input: {

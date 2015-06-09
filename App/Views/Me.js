@@ -14,10 +14,8 @@ var {
   ScrollView
 } = React;
 
-var Base = require("../Common/Base");
-var Color = require("../Common/Color");
+var Color = require('../Common/Color');
 
-var Icon = require("react-native-icons");
 var Router = require('react-native-router');
 
 var UserProfile = require('../Components/UserProfile');

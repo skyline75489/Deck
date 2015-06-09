@@ -13,13 +13,13 @@ var {
   ActivityIndicatorIOS,
 } = React;
 
-var Base = require("../Common/Base");
-var Color = require("../Common/Color");
-var Api = require("../Network/Api");
+var Base = require('../Common/Base');
+var Color = require('../Common/Color');
+var Api = require('../Network/Api');
 
-var LanguageRow = require("./LanguageRow");
+var LanguageRow = require('./LanguageRow');
 
-var Icon = require("react-native-icons");
+var Icon = require('react-native-icons');
 
 module.exports = React.createClass({
   getInitialState: function() {
@@ -32,37 +32,37 @@ module.exports = React.createClass({
       contributorsDataReady: false,
     };
   },
-  componentDidMount: function() { 
-    var that = this;
+  componentDidMount: function() {
+    var self = this;
     Api.getRepoInfo(this.props.data.repoName, function(data) {
-      if (data.hasOwnProperty('message') && data.message === "Not Found") {
+      if (data.hasOwnProperty('message') && data.message === 'Not Found') {
         AlertIOS.alert(
           'Error',
           'Repo not found!',
-          [{text: 'OK', onPress: () => that.props.data.goBack()},]
+          [{text: 'OK', onPress: () => self.props.data.goBack()},]
         );
         return;
       }
-      that.setState({
+      self.setState({
         repoData: data,
         repoDataReady: true,
       });
     });
     Api.getRepoLanguage(this.props.data.repoName, function(data) {
-      that.setState({
+      self.setState({
         languageData: data,
         languageDataReady: true,
       });
     });
     Api.getRepoContributors(this.props.data.repoName, function(data) {
-      that.setState({
+      self.setState({
         contributorsData: data,
         contributorsDataReady: true,
       });
     });
   },
-  renderLoadingView: function() { 
-    return ( 
+  renderLoadingView: function() {
+    return (
       <View style={styles.loadingView}>
         <View>
           <ActivityIndicatorIOS
@@ -72,7 +72,7 @@ module.exports = React.createClass({
           />
         </View>
       </View>
-    ); 
+    );
   },
 
   render: function() {
@@ -85,9 +85,9 @@ module.exports = React.createClass({
     // Repo icon and full name
     var data = this.state.repoData;
     var languageData = this.state.languageData;
-    var icon = <Icon name='octicons|repo' size={16} color='#666666' style={styles.icon}/>;
+    var icon = <Icon name="octicons|repo" size={16} color="#666666" style={styles.icon}/>;
     if (data.fork) {
-      icon = <Icon name='octicons|repoForked' size={16} color='#666666' style={styles.icon}/>;
+      icon = <Icon name="octicons|repoForked" size={16} color="#666666" style={styles.icon}/>;
     }
 
     // Repo Description, only display if it exists.
@@ -119,17 +119,17 @@ module.exports = React.createClass({
         </View>
         <View style={styles.actionWrapper}>
             <View style={styles.actionItemWrapper}>
-              <Icon name='octicons|eyeWatch' size={16} color='#666666' style={styles.icon}/>
+              <Icon name="octicons|eyeWatch" size={16} color="#666666" style={styles.icon}/>
               <Text style={styles.actionText}>Watch {data.subscribers_count}</Text>
             </View>
 
             <View style={styles.actionItemWrapper}>
-              <Icon name='octicons|star' size={16} color='#666666' style={styles.icon}/>
+              <Icon name="octicons|star" size={16} color="#666666" style={styles.icon}/>
               <Text style={styles.actionText}>Star {data.watchers_count}</Text>
             </View>
 
             <View style={styles.actionItemWrapper}>
-              <Icon name='octicons|repoForked' size={16} color='#666666' style={styles.icon}/>
+              <Icon name="octicons|repoForked" size={16} color="#666666" style={styles.icon}/>
               <Text style={styles.actionText}>Fork {data.network_count}</Text>
             </View>
         </View>

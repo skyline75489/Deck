@@ -2,7 +2,7 @@
 
 var React = require('react-native');
 
-var Color = require("../Common/Color");
+var Color = require('../Common/Color');
 
 var {
   StyleSheet,

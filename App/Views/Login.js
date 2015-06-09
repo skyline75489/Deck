@@ -13,9 +13,9 @@ var {
   StatusBarIOS
 } = React;
 
-var Base = require("../Common/Base");
+var Base = require('../Common/Base');
 
-var Icon = require("react-native-icons");
+var Icon = require('react-native-icons');
 
 var LoginView = React.createClass({
   _doLogin: function() {
@@ -25,9 +25,9 @@ var LoginView = React.createClass({
     return (
       <View style={styles.containter}>
       <Icon
-        name='ion|social-github'
+        name="ion|social-github"
         size={100}
-        color='black'
+        color="black"
         style={styles.icon_github}
       />
       <View style={styles.inputContainter}>
@@ -41,7 +41,7 @@ var LoginView = React.createClass({
         autoFocus={true}
         onChangeText={(email) => this.setState({email: email})}
         onEndEditing={()=>{
-              this.refs["password"].focus();
+          this.refs.password.focus();
         }}
        />
 

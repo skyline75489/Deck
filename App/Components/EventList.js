@@ -47,11 +47,11 @@ module.exports = React.createClass({
     };
   },
 
-  componentDidMount: function() { 
-    var me = this;
+  componentDidMount: function() {
+    var self = this;
     Api.getUserReceivedEvents(this.props.data.username, function(data){
-      me.setState({
-        dataSource: me.state.dataSource.cloneWithRows(data),
+      self.setState({
+        dataSource: self.state.dataSource.cloneWithRows(data),
         dataReady: true,
       });
     });
@@ -81,8 +81,8 @@ module.exports = React.createClass({
       />
     );
   },
-  renderLoadingView: function() { 
-    return ( 
+  renderLoadingView: function() {
+    return (
       <View style={styles.loadingView}>
         <View>
           <ActivityIndicatorIOS
@@ -92,7 +92,7 @@ module.exports = React.createClass({
           />
         </View>
       </View>
-    ); 
+    );
   }
 });
 

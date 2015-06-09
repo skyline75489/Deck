@@ -12,10 +12,8 @@ var {
   TouchableOpacity,
 } = React;
 
-var Base = require("../Common/Base");
-var Color = require("../Common/Color");
+var Color = require('../Common/Color');
 
-var Icon = require("react-native-icons");
 
 module.exports = React.createClass({
   goToUser: function() {
@@ -30,7 +28,7 @@ module.exports = React.createClass({
             <Image
               style={styles.avatar}
               source={{uri: data.avatar_url}}
-            /> 
+            />
           </View>
           <View style={styles.nameWrapper}>
             <Text style={styles.nameText}>{data.login}</Text>
@@ -51,7 +49,7 @@ var styles = StyleSheet.create({
     height: 20,
   },
   avatarWrapper: {
-    flex: 0.08, 
+    flex: 0.08,
   },
   nameWrapper: {
     flex: 0.68,

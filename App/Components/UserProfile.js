@@ -14,15 +14,14 @@ var {
   ActivityIndicatorIOS,
 } = React;
 
-var Base = require("../Common/Base");
-var Color = require("../Common/Color");
+var Base = require('../Common/Base');
+var Color = require('../Common/Color');
 var Api = require('../Network/Api');
 
 var RepoList = require('../Components/RepoList');
 var RepoDetail = require('./RepoDetail');
 
-var Icon = require("react-native-icons");
-var Router = require('react-native-router');
+var Icon = require('react-native-icons');
 
 module.exports = React.createClass({
   goToRepo: function(repoName) {
@@ -41,23 +40,23 @@ module.exports = React.createClass({
       repoListDataReady: false,
     };
   },
-  componentDidMount: function() { 
-    var that = this;
+  componentDidMount: function() {
+    var self = this;
     Api.getUserProfile(this.props.data.username, function(data) {
-      that.setState({
+      self.setState({
         profileData: data,
         profileDataReady: true,
       });
     });
     Api.getUserRecentlyPushedRepo(this.props.data.username, 1, 5, function(data) {
-      that.setState({
+      self.setState({
         repoListData: data,
         repoListDataReady: true,
       });
     });
   },
-  renderLoadingView: function() { 
-    return ( 
+  renderLoadingView: function() {
+    return (
       <View style={styles.loadingView}>
         <View>
           <ActivityIndicatorIOS
@@ -67,7 +66,7 @@ module.exports = React.createClass({
           />
         </View>
       </View>
-    ); 
+    );
   },
 
   render: function() {
@@ -77,27 +76,27 @@ module.exports = React.createClass({
     var data = this.state.profileData;
 
     // Only display an item if it exists.
-    var infoList = []
+    var infoList = [];
     if (data.location) {
       infoList.push(
         <View key={Base.makeKey()} style={styles.itemWrapper}>
           <View style={styles.iconWrapper}>
-            <Icon name='octicons|location' size={16} color='#666666' style={styles.icon}/>
+            <Icon name="octicons|location" size={16} color="#666666" style={styles.icon}/>
           </View>
           <View style={styles.textWrapper}>
             <Text style={styles.location}>{data.location}</Text>
           </View>
         </View>
       );
-    } 
+    }
     if (data.email) {
       infoList.push(
         <View key={Base.makeKey()} style={styles.itemWrapper}>
           <View style={styles.iconWrapper}>
-            <Icon name='octicons|mail' size={16} color='#666666' style={styles.icon}/>
+            <Icon name="octicons|mail" size={16} color="#666666" style={styles.icon}/>
           </View>
           <View style={styles.textWrapper}>
-            <TouchableOpacity onPress={()=>{LinkingIOS.openURL('mailto:' + data.email);}}><Text style={styles.email}>{data.email}</Text></TouchableOpacity>
+            <TouchableOpacity onPress={()=>{LinkingIOS.openURL('mailto:' + data.email); }}><Text style={styles.email}>{data.email}</Text></TouchableOpacity>
           </View>
         </View>
       );
@@ -106,10 +105,10 @@ module.exports = React.createClass({
       infoList.push(
         <View key={Base.makeKey()} style={styles.itemWrapper}>
           <View style={styles.iconWrapper}>
-            <Icon name='octicons|link' size={16} color='#666666' style={styles.icon}/>
+            <Icon name="octicons|link" size={16} color="#666666" style={styles.icon}/>
           </View>
           <View style={styles.textWrapper}>
-            <TouchableOpacity onPress={()=>{LinkingIOS.openURL(data.blog);}}><Text style={styles.blog}>{data.blog}</Text></TouchableOpacity>
+            <TouchableOpacity onPress={()=>{LinkingIOS.openURL(data.blog); }}><Text style={styles.blog}>{data.blog}</Text></TouchableOpacity>
           </View>
         </View>
       );
@@ -122,7 +121,7 @@ module.exports = React.createClass({
             <Image
               style={styles.avatar}
               source={{uri: data.avatar_url}}
-            />   
+            />
           </View>
           <View style={styles.nameWrapper}>
             <Text style={styles.name}>{data.name}</Text>
@@ -145,7 +144,6 @@ module.exports = React.createClass({
                 <Text style={styles.statTitle}>Following</Text>
             </View>
         </View>
-        
         <View style={styles.repoListWrapper}>
           <RepoList scrollEnabled={false} dataSource={this.state.repoListData} goToRepo={this.goToRepo}/>
         </View>

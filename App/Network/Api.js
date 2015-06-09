@@ -24,8 +24,8 @@ var Api = {
     fetch(url, {headers: myHeaders})
     .then((response) => response.json())
     .then(function(ret) {
-      var url = `https://api.github.com/users/${username}/starred?per_page=1`;
-      fetch(url, {method: 'HEAD', headers: myHeaders,})
+      var url2 = `https://api.github.com/users/${username}/starred?per_page=1`;
+      fetch(url2, {method: 'HEAD', headers: myHeaders,})
       .then((response) => response.headers)
       .then(function(headers) {
         var link = headers.get('Link');
