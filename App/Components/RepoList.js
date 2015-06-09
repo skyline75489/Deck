@@ -32,9 +32,9 @@ module.exports = React.createClass({
   render: function() {
     return(
       <ListView 
-      dataSource={this.state.dataSource}
-      renderRow={this._renderRow}
-      scrollEnabled={this.props.scrollEnabled}>
+        dataSource={this.state.dataSource}
+        renderRow={this._renderRow}
+        scrollEnabled={this.props.scrollEnabled}>
       </ListView>
     );
   },

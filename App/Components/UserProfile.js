@@ -59,13 +59,13 @@ module.exports = React.createClass({
   renderLoadingView: function() { 
     return ( 
       <View style={styles.loadingView}>
-      <View>
-        <ActivityIndicatorIOS
-          animating={true}
-          style={{height: 30}}
-          size="small"
-        />
-      </View>
+        <View>
+          <ActivityIndicatorIOS
+            animating={true}
+            style={{height: 30}}
+            size="small"
+          />
+        </View>
       </View>
     ); 
   },
@@ -79,34 +79,40 @@ module.exports = React.createClass({
     // Only display an item if it exists.
     var infoList = []
     if (data.location) {
-      infoList.push(<View key={Base.makeKey()} style={styles.itemWrapper}>
-                      <View style={styles.iconWrapper}>
-                        <Icon name='octicons|location' size={16} color='#666666' style={styles.icon}/>
-                      </View>
-                      <View style={styles.textWrapper}>
-                        <Text style={styles.location}>{data.location}</Text>
-                      </View>
-                    </View>);
+      infoList.push(
+        <View key={Base.makeKey()} style={styles.itemWrapper}>
+          <View style={styles.iconWrapper}>
+            <Icon name='octicons|location' size={16} color='#666666' style={styles.icon}/>
+          </View>
+          <View style={styles.textWrapper}>
+            <Text style={styles.location}>{data.location}</Text>
+          </View>
+        </View>
+      );
     } 
     if (data.email) {
-      infoList.push(<View key={Base.makeKey()} style={styles.itemWrapper}>
-                      <View style={styles.iconWrapper}>
-                        <Icon name='octicons|mail' size={16} color='#666666' style={styles.icon}/>
-                      </View>
-                      <View style={styles.textWrapper}>
-                        <TouchableOpacity onPress={()=>{LinkingIOS.openURL('mailto:' + data.email);}}><Text style={styles.email}>{data.email}</Text></TouchableOpacity>
-                      </View>
-                    </View>);
+      infoList.push(
+        <View key={Base.makeKey()} style={styles.itemWrapper}>
+          <View style={styles.iconWrapper}>
+            <Icon name='octicons|mail' size={16} color='#666666' style={styles.icon}/>
+          </View>
+          <View style={styles.textWrapper}>
+            <TouchableOpacity onPress={()=>{LinkingIOS.openURL('mailto:' + data.email);}}><Text style={styles.email}>{data.email}</Text></TouchableOpacity>
+          </View>
+        </View>
+      );
     }
     if (data.blog) {
-      infoList.push(<View key={Base.makeKey()} style={styles.itemWrapper}>
-                      <View style={styles.iconWrapper}>
-                        <Icon name='octicons|link' size={16} color='#666666' style={styles.icon}/>
-                      </View>
-                      <View style={styles.textWrapper}>
-                        <TouchableOpacity onPress={()=>{LinkingIOS.openURL(data.blog);}}><Text style={styles.blog}>{data.blog}</Text></TouchableOpacity>
-                      </View>
-                    </View>);
+      infoList.push(
+        <View key={Base.makeKey()} style={styles.itemWrapper}>
+          <View style={styles.iconWrapper}>
+            <Icon name='octicons|link' size={16} color='#666666' style={styles.icon}/>
+          </View>
+          <View style={styles.textWrapper}>
+            <TouchableOpacity onPress={()=>{LinkingIOS.openURL(data.blog);}}><Text style={styles.blog}>{data.blog}</Text></TouchableOpacity>
+          </View>
+        </View>
+      );
     }
 
     return (

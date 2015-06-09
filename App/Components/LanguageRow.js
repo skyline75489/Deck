@@ -17,9 +17,12 @@ module.exports = React.createClass({
     return (
       <View style={styles.container}>
         <Text style={styles.languageName}>{k} {percent}%</Text>
-        <View style={[{width: (Base.width - 20) * percent * 0.01}, 
-                       {height: 5}, 
-                       {backgroundColor: Color.github_language_color[k]}]}>
+        <View style={
+          [{width: (Base.width - 20) * percent * 0.01},
+           {height: 5},
+           {backgroundColor: Color.github_language_color[k]}]
+         }
+        >
         </View>
       </View>
     );

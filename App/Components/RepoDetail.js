@@ -15,9 +15,9 @@ var {
 
 var Base = require("../Common/Base");
 var Color = require("../Common/Color");
-var Api = require('../Network/Api');
+var Api = require("../Network/Api");
 
-var LanguageRow = require('./LanguageRow');
+var LanguageRow = require("./LanguageRow");
 
 var Icon = require("react-native-icons");
 
@@ -64,19 +64,19 @@ module.exports = React.createClass({
   renderLoadingView: function() { 
     return ( 
       <View style={styles.loadingView}>
-      <View>
-        <ActivityIndicatorIOS
-          animating={true}
-          style={{height: 30}}
-          size="small"
-        />
-      </View>
+        <View>
+          <ActivityIndicatorIOS
+            animating={true}
+            style={{height: 30}}
+            size="small"
+          />
+        </View>
       </View>
     ); 
   },
 
   render: function() {
-    if (! (this.state.repoDataReady &&
+    if (!(this.state.repoDataReady &&
        this.state.languageDataReady &&
        this.state.contributorsDataReady)) {
       return this.renderLoadingView();
@@ -105,9 +105,9 @@ module.exports = React.createClass({
     for (var k in languageData) {
       totalLOC += languageData[k];
     }
-    for (var k in languageData) {
-      var percent = (languageData[k] / totalLOC * 100).toFixed(1);
-      languageStatics.push(<LanguageRow key={Base.makeKey()} name={k} percent={percent}/>);
+    for (var k2 in languageData) {
+      var percent = (languageData[k2] / totalLOC * 100).toFixed(1);
+      languageStatics.push(<LanguageRow key={Base.makeKey()} name={k2} percent={percent}/>);
     }
 
     return (
@@ -139,7 +139,7 @@ module.exports = React.createClass({
           {languageStatics}
         </View>
       </View>
-      );
+    );
   }
 });
 

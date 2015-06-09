@@ -14,7 +14,7 @@ var {
   ActivityIndicatorIOS,
 } = React;
 
-var Base = require("../Common/Base");
+var Base = require('../Common/Base');
 var Api = require('../Network/Api');
 
 var UserProfile = require('./UserProfile');
@@ -71,30 +71,29 @@ module.exports = React.createClass({
     if (!this.state.dataReady) {
       return this.renderLoadingView();
     }
-    return(
-        <RefreshableListView
-          dataSource={this.state.dataSource}
-          renderRow={this._renderRow}
-          loadData={this.fetchNewData}
-          refreshDescription="Refreshing"
-          refreshingIndictatorComponent={this.renderLoadingView()}
-        />
+    return (
+      <RefreshableListView
+        dataSource={this.state.dataSource}
+        renderRow={this._renderRow}
+        loadData={this.fetchNewData}
+        refreshDescription="Refreshing"
+        refreshingIndictatorComponent={this.renderLoadingView()}
+      />
     );
   },
   renderLoadingView: function() { 
     return ( 
       <View style={styles.loadingView}>
-      <View>
-        <ActivityIndicatorIOS
-          animating={true}
-          style={{height: 30}}
-          size="small"
-        />
-      </View>
+        <View>
+          <ActivityIndicatorIOS
+            animating={true}
+            style={{height: 30}}
+            size="small"
+          />
+        </View>
       </View>
     ); 
-  },
-
+  }
 });
 
 var styles = StyleSheet.create({
@@ -117,7 +116,5 @@ var styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
   },
-
 });
-
 

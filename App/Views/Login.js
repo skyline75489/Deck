@@ -58,7 +58,7 @@ var LoginView = React.createClass({
        />
        </View>
       </View>
-      )
+    );
   }
 });
 
@@ -74,7 +74,7 @@ var styles = StyleSheet.create({
   },
   inputs: {
     height: 40,
-    width: Base.width/1.3,
+    width: Base.width / 1.3,
     fontSize: 14,
     padding: 10,
   },

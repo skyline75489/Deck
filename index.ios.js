@@ -23,16 +23,16 @@ var Deck = React.createClass({
     };
   },
   renderScene: function(route, nav) {
-      switch (route.id) {
-        case 'home':
-          return <Home navigator={nav}/>;
-        case 'login':
-          return <Login navigator={nav}/>;
-        default:
-          return (
-            <Login navigator={nav}/>
-          );
-      }
+    switch (route.id) {
+      case 'home':
+        return <Home navigator={nav}/>;
+      case 'login':
+        return <Login navigator={nav}/>;
+      default:
+        return (
+          <Login navigator={nav}/>
+        );
+    }
   },
   render: function() {
     return (
@@ -67,7 +67,7 @@ var styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
-  },
+  }
 });
 
 AppRegistry.registerComponent('Deck', () => Deck);

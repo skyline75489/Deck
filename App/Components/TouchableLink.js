@@ -14,14 +14,15 @@ var {
 
 module.exports = React.createClass({
   render: function() {
-    return (<TouchableOpacity 
-            onPress={this.props.onPress} 
-            >
-              <Text style={styles.highlightText}>
-              {this.props.displayText}
-              </Text>
-            </TouchableOpacity>
-            );
+    return (
+      <TouchableOpacity
+        onPress={this.props.onPress}
+        >
+        <Text style={styles.highlightText}>
+        {this.props.displayText}
+        </Text>
+      </TouchableOpacity>
+    );
   },
 });
 

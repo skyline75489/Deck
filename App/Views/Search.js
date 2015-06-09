@@ -50,11 +50,14 @@ var SearchTextInput = React.createClass({
 
 var SearchIcon = React.createClass({
   render: function() {
-    return (<TouchableOpacity onPress={()=>{
-                this.props.customAction({action: 'search'});
-              }}>
-              <Icon name='octicons|search' size={16} color='white' style={styles.icon}/>
-            </TouchableOpacity>);
+    return (
+      <TouchableOpacity 
+        onPress={()=>{
+          this.props.customAction({action: 'search'});
+        }}>
+        <Icon name='octicons|search' size={16} color='white' style={styles.icon}/>
+      </TouchableOpacity>
+    );
   },
 });
 
@@ -75,7 +78,8 @@ var SearchOption = React.createClass({
           this.props.customAction({action: 'on'});
         }}>
         <Icon name='octicons|threeBars' size={16} color='white' style={styles.icon}/>
-      </TouchableOpacity>);
+      </TouchableOpacity>
+    );
   },
 });
 
@@ -125,7 +129,7 @@ var Search = React.createClass({
           <SearchPage />
         </View>
       </View>
-    )
+    );
   }
 });
 

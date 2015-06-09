@@ -22,9 +22,9 @@ var Router = require('react-native-router');
 module.exports = React.createClass({
   render: function() {
     return (
-          <View>
-          <Text>Activity</Text>
-          </View>
+      <View>
+        <Text>Activity</Text>
+      </View>
     );
   }
 });

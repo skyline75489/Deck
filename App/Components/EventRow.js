@@ -47,35 +47,41 @@ module.exports = React.createClass({
         break;
       case 'MemberEvent':
         var actionDescription = ' added ';
-        var action = <View style={styles.action}>
-                      <Text>{actionDescription}</Text>
-                      <TouchableLink 
-                        displayText={data.payload.member.login} 
-                        onPress={()=>{
-                          this.goToUser(data.payload.member.login);
-                        }}
-                      />
-                      <Text> to </Text>
-                    </View>;
+        var action = (
+          <View style={styles.action}>
+            <Text>{actionDescription}</Text>
+            <TouchableLink
+              displayText={data.payload.member.login}
+              onPress={()=>{
+                this.goToUser(data.payload.member.login);
+              }}
+            />
+            <Text> to </Text>
+          </View>
+        );
         break;
     }
 
-    var actor = <TouchableLink 
-                  style={styles.actor} 
-                  displayText={data.actor.login} 
-                  onPress={()=>{
-                    this.goToUser(data.actor.login);
-                  }}
-                />;
+    var actor = (
+      <TouchableLink
+        style={styles.actor}
+        displayText={data.actor.login}
+        onPress={()=>{
+          this.goToUser(data.actor.login);
+        }}
+      />
+    );
 
-    var payload = <TouchableLink 
-                    style={styles.payload}
-                    displayText={data.repo.name}
-                    onPress={()=>{
-                      this.goToRepo(data.repo.name);
-                    }}
-                    goBack={this.goBack}
-                  />;
+    var payload = (
+      <TouchableLink
+        style={styles.payload}
+        displayText={data.repo.name}
+        onPress={()=>{
+          this.goToRepo(data.repo.name);
+        }}
+        goBack={this.goBack}
+      />
+    );
 
     return (
       <View style={styles.containter}>

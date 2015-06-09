@@ -45,7 +45,6 @@ module.exports = React.createClass({
           </View>
         </View>
       </TouchableOpacity>
-
   	);
   }
 });
