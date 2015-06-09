@@ -121,7 +121,8 @@ module.exports = React.createClass({
           <View style={styles.avatarWrapper}>
             <Image
               style={styles.avatar}
-              source={{uri: data.avatar_url}}/>   
+              source={{uri: data.avatar_url}}
+            />   
           </View>
           <View style={styles.nameWrapper}>
             <Text style={styles.name}>{data.name}</Text>

@@ -18,7 +18,10 @@ var ActionSheetIOS = require('ActionSheetIOS');
 var Base = require("../Common/Base");
 var Color = require("../Common/Color");
 
+var SearchResult = require("../Components/SearchResult");
+
 var Icon = require("react-native-icons");
+
 
 var SearchTextInput = React.createClass({
   getInitialState: function() {
@@ -61,21 +64,12 @@ var SearchIcon = React.createClass({
   },
 });
 
-var SearchPage = React.createClass({
-  render: function() {
-    return (
-      <View>
-        <Text>Search page</Text>
-      </View>
-    );
-  },
-});
 
 var SearchOption = React.createClass({
   render: function() {
     return (
       <TouchableOpacity onPress={()=>{
-          this.props.customAction({action: 'on'});
+          this.props.customAction({action: 'option'});
         }}>
         <Icon name='octicons|threeBars' size={16} color='white' style={styles.icon}/>
       </TouchableOpacity>
@@ -105,14 +99,18 @@ var Search = React.createClass({
   },
   customAction: function(event) {
     switch(event.action) {
-      case 'on':
+      case 'option':
         this.showActionSheet();
         break;
       case 'submit':
-        console.log(event.data);
+        var query = event.data;
+        console.log(query)
+        this.refs.search.doSearch(query, this.state.currentSearchType);
         break;
       case 'search':
-        console.log(this.refs.input.state.input);
+        var query = this.refs.input.state.input;
+        console.log(query);
+        this.refs.search.doSearch(query, this.state.currentSearchType);
         this.refs.input.resignResponder();
         break;
     }
@@ -126,7 +124,7 @@ var Search = React.createClass({
           <SearchIcon style={[styles.corner, styles.alignLeft]} customAction={this.customAction} />
         </View>
         <View style={styles.searchResult}>
-          <SearchPage />
+          <SearchResult ref="search"/>
         </View>
       </View>
     );
@@ -205,5 +203,6 @@ var styles = StyleSheet.create({
   },
   searchResult: {
     top: 64,
+    height: Base.height - 64
   }
 });

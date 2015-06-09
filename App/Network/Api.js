@@ -85,6 +85,11 @@ var Api = {
 
   getSearchRepo: function(query, callback) {
     var url = `https://api.github.com/search/repositories?q=${query}`;
+    console.log(url);
+    return this.doRequest(url, callback);
+  },
+  getSearchUser: function(query, callback) {
+    var url = `https://api.github.com/search/users?q=${query}`;
     return this.doRequest(url, callback);
   }
 };
