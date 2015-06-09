@@ -21,6 +21,9 @@ module.exports = {
 And put it under `App/Common`.
 
 
+Screenshots
+===========
+
 ![1](./Screenshots/1.png)
 
 ![2](./Screenshots/2.png)
