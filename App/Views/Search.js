@@ -45,8 +45,10 @@ var SearchTextInput = React.createClass({
     return (
       <TextInput 
         ref="input"
-        style={styles.input} 
+        style={styles.input}
+        autoCapitalize="none" 
         autoFocus={true}
+        autoCorrect={false}
         returnKeyType={'search'} 
         placeholder={placeholder} 
         onSubmitEditing={this.handleSubmit}
