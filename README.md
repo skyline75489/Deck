@@ -30,6 +30,7 @@ Screenshots
 
 ![3](./Screenshots/3.png)
 
+![4](./Screenshots/4.png)
 
 License
 -------
