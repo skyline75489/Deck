@@ -23,7 +23,7 @@ module.exports = React.createClass({
   },
   render: function() {
     var data = this.props.data;
-  	return (
+    return (
       <TouchableOpacity onPress={this.goToUser}>
         <View style={styles.containter}>
           <View style={styles.avatarWrapper}>
@@ -37,7 +37,7 @@ module.exports = React.createClass({
           </View>
         </View>
       </TouchableOpacity>
-  	);
+    );
   }
 });
 
@@ -47,14 +47,14 @@ var styles = StyleSheet.create({
     flexDirection: 'row',
   },
   avatar: {
-  	width: 20,
-  	height: 20,
+    width: 20,
+    height: 20,
   },
   avatarWrapper: {
-  	flex: 0.08, 
+    flex: 0.08, 
   },
   nameWrapper: {
-  	flex: 0.68,
+    flex: 0.68,
   },
   nameText: {
     color: Color.github_link,

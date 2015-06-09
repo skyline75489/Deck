@@ -10,6 +10,7 @@ var {
   Image,
   TextInput,
   TouchableOpacity,
+  TouchableHighlight,
   Navigator,
 } = React;
 
@@ -18,10 +19,14 @@ var ActionSheetIOS = require('ActionSheetIOS');
 var Base = require("../Common/Base");
 var Color = require("../Common/Color");
 
+var UserProfile = require('../Components/UserProfile');
+var RepoDetail = require('../Components/RepoDetail');
 var SearchResult = require("../Components/SearchResult");
 
 var Icon = require("react-native-icons");
+var Router = require('react-native-router');
 
+var ACTION_OPTIONS = ['Repo', 'User'];
 
 var SearchTextInput = React.createClass({
   getInitialState: function() {
@@ -83,7 +88,21 @@ var Search = React.createClass({
       currentSearchType: 'Repo',
     };
   },
-
+  goToUser: function(username) {
+    this.props.toRoute({
+      name: username,
+      component: UserProfile,
+      data: {username: username},
+    });
+  },
+  goToRepo: function(repoName) {
+    // repoName is actully 'owner/repo'
+    this.props.toRoute({
+      name: repoName,
+      component: RepoDetail,
+      data: {repoName: repoName, goBack: this.props.toBack},
+    });
+  },
   showActionSheet: function() {
     ActionSheetIOS.showActionSheetWithOptions({
       options: ACTION_OPTIONS,
@@ -104,7 +123,6 @@ var Search = React.createClass({
         break;
       case 'submit':
         var query = event.data;
-        console.log(query)
         this.refs.search.doSearch(query, this.state.currentSearchType);
         break;
       case 'search':
@@ -124,24 +142,78 @@ var Search = React.createClass({
           <SearchIcon style={[styles.corner, styles.alignLeft]} customAction={this.customAction} />
         </View>
         <View style={styles.searchResult}>
-          <SearchResult ref="search"/>
+          <SearchResult 
+            ref="search"
+            goToUser={this.goToUser}
+            goToRepo={this.goToRepo}
+          />
         </View>
       </View>
     );
   }
 });
 
-var Icon = require("react-native-icons");
-var Router = require('react-native-router');
-
-var ACTION_OPTIONS = ['Repo', 'User'];
 
 module.exports = React.createClass({
-  _renderScene: function(route, navigator) {
-    switch(route.name) {
-      case 'search':
-        return <Search nav={navigator}/>;
+  getInitialState: function() {
+    return {
+      route: {
+        name: null,
+        index: null
+      },
+      dragStartX: null,
+      didSwitchView: null,
     }
+  },
+  onBack: function(navigator) {
+    if (this.state.route.index > 0) {
+      navigator.pop();
+    }
+  },
+  onForward: function(route, navigator) {
+    route.index = this.state.route.index + 1 || 1;
+    navigator.push(route);
+  },
+
+  _renderScene: function(route, navigator) {
+
+    var goForward = function(route) {
+      route.index = this.state.route.index + 1 || 1;
+      navigator.push(route);
+    }.bind(this);
+
+    var goBackwards = function() {
+      this.onBack(navigator);
+    }.bind(this);
+
+    var customAction = function(opts) {
+      this.customAction(opts);
+    }.bind(this);
+
+    var Content = route.component;
+
+    if (route.name === 'search') {
+      return (
+        <Search 
+          nav={navigator}
+          toRoute={goForward}
+          toBack={goBackwards}
+        />
+      );
+    }
+    return (
+      <View>
+        <Content
+          name={route.name}
+          index={route.index}
+          data={route.data}
+          toRoute={goForward}
+          toBack={goBackwards}
+          customAction={customAction}
+          style={styles.searchResult}
+        />
+      </View>
+    );
   },
   render: function() {
     return (

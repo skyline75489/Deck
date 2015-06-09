@@ -17,6 +17,8 @@ var {
 var Base = require("../Common/Base");
 var Api = require('../Network/Api');
 
+var UserProfile = require('./UserProfile');
+var RepoDetail = require('./RepoDetail');
 var RepoRow = require('./RepoRow');
 var UserRow = require('./UserRow');
 
@@ -64,7 +66,7 @@ module.exports = React.createClass({
     if (this.state.option === 'Repo') {
       var Row = <RepoRow data={data} goToRepo={this.props.goToRepo}/>
     } else if (this.state.option === 'User') {
-      var Row = <UserRow data={data} goToRepo={this.props.goToRepo}/>
+      var Row = <UserRow data={data} goToUser={this.props.goToUser}/>
     }
      return (
       <View style={styles.row}>
