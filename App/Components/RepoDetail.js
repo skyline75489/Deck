@@ -93,10 +93,11 @@ module.exports = React.createClass({
     // Repo Description, only display if it exists.
     var RepoDescription;
     if (data.description) {
-      RepoDescription = <View style={styles.repoDescriptionWrapper}>
-                          <Text style={styles.repoDescription}>{data.description}</Text>
-                        </View>;
-
+      RepoDescription = (
+        <View style={styles.repoDescriptionWrapper}>
+          <Text style={styles.repoDescription}>{data.description}</Text>
+        </View>
+      );
     }
 
     // Language Statistics
@@ -111,7 +112,7 @@ module.exports = React.createClass({
     }
 
     return (
-      <View style={styles.containter}>
+      <ScrollView style={styles.containter}>
         <View style={styles.repoNameWrapper}>
           {icon}
           <Text style={styles.repoFullName}>{data.full_name}</Text>
@@ -138,7 +139,7 @@ module.exports = React.createClass({
         <View style={styles.languageWrapper}>
           {languageStatics}
         </View>
-      </View>
+      </ScrollView>
     );
   }
 });
