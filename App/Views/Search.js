@@ -40,6 +40,7 @@ var SearchTextInput = React.createClass({
     this.refs.input.blur();
   },
   render: function() {
+    StatusBarIOS.setStyle(1);
     var placeholder = `Search ${this.state.currentSearchType}`;
     return (
       <TextInput
