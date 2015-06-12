@@ -32,6 +32,9 @@ module.exports = React.createClass({
     };
   },
   doSearch: function(query, option) {
+    if(!query.trim()) {
+      return;
+    }
     var self = this;
     this.setState({
       empty: false,
