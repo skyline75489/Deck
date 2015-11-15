@@ -19,7 +19,7 @@ var Api = require('../Network/Api');
 
 var LanguageRow = require('./LanguageRow');
 
-var Icon = require('react-native-icons');
+var { Icon, } = require('react-native-icons');
 
 module.exports = React.createClass({
   getInitialState: function() {

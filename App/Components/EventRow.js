@@ -17,7 +17,7 @@ var Color = require('../Common/Color');
 
 var TouchableLink = require('./TouchableLink');
 
-var Icon = require('react-native-icons');
+var { Icon, } = require('react-native-icons');
 
 module.exports = React.createClass({
   goToUser: function(username) {

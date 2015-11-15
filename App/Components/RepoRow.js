@@ -15,7 +15,7 @@ var {
 var Base = require('../Common/Base');
 var Color = require('../Common/Color');
 
-var Icon = require('react-native-icons');
+var { Icon, } = require('react-native-icons');
 
 module.exports = React.createClass({
   goToRepo: function() {
@@ -81,4 +81,3 @@ var styles = StyleSheet.create({
     marginLeft: 2,
   },
 });
-

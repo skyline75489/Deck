@@ -59,4 +59,3 @@ var styles = StyleSheet.create({
     fontWeight: 'bold',
   }
 });
-

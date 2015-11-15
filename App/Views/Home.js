@@ -23,7 +23,7 @@ var Me = require('./Me');
 module.exports = React.createClass({
   getInitialState: function() {
     return {
-      selectedTab: 'search',
+      selectedTab: 'dashboard',
       notifCount: 0,
       presses: 0,
     };

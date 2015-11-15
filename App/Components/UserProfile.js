@@ -21,7 +21,7 @@ var Api = require('../Network/Api');
 var RepoList = require('../Components/RepoList');
 var RepoDetail = require('./RepoDetail');
 
-var Icon = require('react-native-icons');
+var { Icon, } = require('react-native-icons');
 
 module.exports = React.createClass({
   goToRepo: function(repoName) {
@@ -179,7 +179,7 @@ var styles = StyleSheet.create({
     marginBottom: 10,
   },
   icon: {
-    width: 15, 
+    width: 15,
     height: 15,
   },
   itemWrapper: {
@@ -245,4 +245,3 @@ var styles = StyleSheet.create({
     flexDirection: 'row',
   },
 });
-
