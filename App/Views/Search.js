@@ -23,7 +23,7 @@ var UserProfile = require('../Components/UserProfile');
 var RepoDetail = require('../Components/RepoDetail');
 var SearchResult = require('../Components/SearchResult');
 
-var Icon = require('react-native-icons');
+var { Icon, } = require('react-native-icons');
 
 var ACTION_OPTIONS = ['Repo', 'User'];
 

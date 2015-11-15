@@ -36,6 +36,7 @@
   }
   return NO;
 }
+/*
 
 - (void)testRendersWelcomeScreen {
   UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
@@ -64,5 +65,5 @@
   XCTAssertTrue(foundElement, @"Cound't find element with text '%@' in %d seconds", TEXT_TO_LOOK_FOR, TIMEOUT_SECONDS);
 }
 
-
+*/
 @end

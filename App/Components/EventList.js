@@ -10,7 +10,6 @@ var {
   Image,
   TouchableHighlight,
   TouchableOpacity,
-  StatusBarIOS,
   ActivityIndicatorIOS,
 } = React;
 
@@ -117,4 +116,3 @@ var styles = StyleSheet.create({
     flexDirection: 'row',
   },
 });
-

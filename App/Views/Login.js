@@ -15,7 +15,7 @@ var {
 
 var Base = require('../Common/Base');
 
-var Icon = require('react-native-icons');
+var { Icon, } = require('react-native-icons');
 
 var LoginView = React.createClass({
   _doLogin: function() {

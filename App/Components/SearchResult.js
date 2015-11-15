@@ -11,7 +11,6 @@ var {
   TouchableHighlight,
   TouchableOpacity,
   ActivityIndicatorIOS,
-  StatusBarIOS
 } = React;
 
 var Base = require('../Common/Base');

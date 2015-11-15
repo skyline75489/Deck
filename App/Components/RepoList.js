@@ -10,7 +10,6 @@ var {
   Image,
   TouchableHighlight,
   TouchableOpacity,
-  StatusBarIOS
 } = React;
 
 var RepoRow = require('./RepoRow');

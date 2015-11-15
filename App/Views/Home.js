@@ -9,11 +9,10 @@ var {
   TextInput,
   Image,
   TouchableOpacity,
-  StatusBarIOS
 } = React;
 
-var SMXTabBarIOS = require('SMXTabBarIOS');
-var SMXTabBarItemIOS = SMXTabBarIOS.Item;
+var { TabBarIOS, } = require('react-native-icons');
+var TabBarItemIOS = TabBarIOS.Item;
 
 var Dashboard = require('./Dashboard');
 var Activity = require('./Activity');
@@ -49,12 +48,12 @@ module.exports = React.createClass({
   },
   render: function () {
     return (
-      <SMXTabBarIOS
+      <TabBarIOS
         selectedTab={this.state.selectedTab}
         tintColor={'#4183C4'}
         barTintColor={'#FFFFFF'}
         styles={styles.tabBar}>
-        <SMXTabBarItemIOS
+        <TabBarItemIOS
           name="dashboard"
           iconName={'ion|ios-home-outline'}
           title={'Dashboard'}
@@ -67,8 +66,8 @@ module.exports = React.createClass({
             });
           }}>
           {this._renderContent()}
-        </SMXTabBarItemIOS>
-        <SMXTabBarItemIOS
+        </TabBarItemIOS>
+        <TabBarItemIOS
             name="activity"
             iconName={'ion|ios-paper-outline'}
             title={'Activity'}
@@ -81,8 +80,8 @@ module.exports = React.createClass({
             });
           }}>
           {this._renderContent()}
-        </SMXTabBarItemIOS>
-        <SMXTabBarItemIOS
+        </TabBarItemIOS>
+        <TabBarItemIOS
             name="search"
             iconName={'ion|ios-search'}
             title={'Search'}
@@ -95,8 +94,8 @@ module.exports = React.createClass({
             });
           }}>
           {this._renderContent()}
-        </SMXTabBarItemIOS>
-        <SMXTabBarItemIOS
+        </TabBarItemIOS>
+        <TabBarItemIOS
             name="me"
             iconName={'ion|person'}
             title={'Me'}
@@ -109,8 +108,8 @@ module.exports = React.createClass({
             });
           }}>
           {this._renderContent()}
-        </SMXTabBarItemIOS>
-      </SMXTabBarIOS>
+        </TabBarItemIOS>
+      </TabBarIOS>
     );
   }
 });
@@ -125,4 +124,3 @@ var styles = StyleSheet.create({
     margin: 50,
   },
 });
-
