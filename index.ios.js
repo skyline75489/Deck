@@ -1,20 +1,14 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- */
 'use strict';
 
-var React = require('react-native');
-var {
-  AppRegistry,
-  StyleSheet,
-  Navigator,
-  Text,
-  View,
-} = React;
+var React = require('React');
+const {AppRegistry} = require('react-native');
 
-var Home       = require('./App/Views/Home');
-var Login      = require('./App/Views/Login');
+var Navigator = require('Navigator');
+var StyleSheet = require('StyleSheet');
+var View = require('View');
+var Text = require('Text');
+var Home = require('./js/Views/Home');
+var Login = require('./js/Views/Login');
 
 var Deck = React.createClass({
  getInitialState: function() {
